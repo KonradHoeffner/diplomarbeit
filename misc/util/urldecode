@@ -1,0 +1,12 @@
+#!/bin/bash
+## urldecode mit der bash und sed
+## originalcode by xela
+echo -e "$(sed 's/+/ /g; s/%/\\x/g')"
+
+#!/bin/bash
+
+#while read line
+#do
+# sed 's/+/ /g; s/%/\\\\x/g' | xargs -I @ echo -e @
+#done
+

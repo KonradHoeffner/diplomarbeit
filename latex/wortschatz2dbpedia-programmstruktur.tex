@@ -1,0 +1,115 @@
+\section{Programmstruktur Wortschatz2DBpedia}
+\todo{entscheiden, wo das genau hinsoll mit dem paradigma und der kapselung des veränderlichen und so}
+Ein Grundprinzip der Objektorientierten Programmierung ist "`kapsele was veränderlich ist und isoliere es von dem, was bleibt"'.
+\subsection{Paketliste}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Paketname\footnotemark	&Funktion\\
+\hline
+Standardpaket	&Verschiedene Helperprogramme\\
+analyse		&Analyse einer annotierten Stichprobe\\
+datasource	&Datenquellen für DBpedia und den Wortschatz\\
+gui		&Graphisches Benutzerinterface für das Mapping\\
+match		&Erstellen und Konfiguration des Mappings\\
+\bottomrule
+\end{tabular}
+\end{center}
+\footnotetext{Exklusive dem Präfix "`wortschatz2dbpedia."'}
+
+Im Folgenden werden nun die wichtigsten Klassen und Methoden noch einmal separat aufgeführt.
+Es handelt sich dabei um diejenigen, die für die normale Nutzung, die Wartung oder die Analyse relevant sind.
+\subsection{Paket analyse}
+\paragraph{Klasse Analyse}
+Diese Klasse liest eine ausgewertete Stichprobe ein und wertet diese aus.
+Mit Hilfe des gegebenen Klassifizierers wird die Stichprobe in Teilmengen unterteilt und für jede dieser Teilmengen die Fehlerrate bestimmt.
+Die Entscheidung, ob ein bestimmter StringTransformator beim Mapping benutzt wird, lässt sich damit objektiv an der Fehlerrate der durch ihn erzeugten Links festmachen.
+Die Ergebnisse werden auf folgende Art und Weise ausgegeben:
+\begin{itemize}
+\item Anzeige als Torten- (Vorkommenshäufigkeit jeder Klasse) und Balkendiagramm (Fehlerrate)
+\item Speichern der Diagramme im Format encapsulated postscript (eps)
+\item Speichern als Tabelle im Format comma separated value (csv) mit einem Tabulator als Trennzeichen
+\end{itemize}
+\paragraph{Interface Classfier}
+Dieses Interface ist eine Anwendung des Strategy-Entwurfsmusters\footnotemark.
+\footnotetext{Funktionsparameter sind in Java nicht möglich. Das Strategy-Entwurfsmuster kapselt daher einen Algorithmus (hier eine Implementierung von \emph{classify()}) als Klasse.}
+\begin{lstlisting}
+public interface Classifier
+{
+	public String[] getClasses();
+	// class 0 will be excluded from further analysis  
+	public int classify(SampleEntry entry);
+}
+\end{lstlisting}
+\subparagraph{Anwendung}
+\todo{umschreiben: Sollte eine 
+Bei einer Änderung 
+Zum Analysieren der Korrektheit einer bestimmten Untermenge einer Stichprobe.}
+%\begin{bem}
+
+%\end{bem}
+\begin{bsp}
+Wir möchten unser Mapping vergrößern.
+Bis jetzt erzeugen wir nur dann einen Link, wenn DBpedia-Label und Wort exakt übereinstimmen.
+Nun überlegen wir, dass man Abkürzungen wie "`ADIDAS"' ja auch "`A.D.I.D.A.S"' schreiben könnte. Also bauen wir einen neuen StringTransformator, der alle Punkte entfernt.
+\begin{lstlisting}
+package wortschatz2dbpedia.match;
+public class RemovePeriodTransformer implements StringTransformer
+{
+  public String transform(String s)
+  {return s.replaceAll("\.","");}
+  
+  public String getDescription()
+  {return "Removes all periods.";}
+} 
+\end{lstlisting}
+Nun möchten wir uns davon überzeugen, wie groß die erwartete Ausbeute und Fehlerquote dieses StringTransformators ist.
+Daher benötigen wir eine annotierte Stichprobe. Ein Umfang von 200 Einträgen sollte dabei einen guten Kompromiss zwischen Auswertungszeit und Aussagekraft der Ergebnisse gewährleisten\footnotemark.
+\footnotetext{\todo{hier was schreiben über konfidenzintervalle und so}}
+Da die Auswertung einer solchen Stichprobe durchaus mehrere Tage in Anspruch nehmen kann, ist es unpraktisch, bei jeder Änderung eine neue Stichprobe zu erstellen.
+Daher wurde zuerst ein möglichst unscharfes Mapping erstellt, dass auf möglichst hohe Coverage ausgelegt war und in dem möglichst alle zu testenden Klassen enthalten sein sollten.
+Für dieses Mapping wurde dann eine Stichprobe mit 200 Einträgen erstellt und annotiert \footnote{im Projektordner unter \emph{analyse/mapping1/stichprobe\_ausgewertet.csv}}.
+Wir möchten die Einträge in folgende Kategorien einteilen
+\begin{itemize}
+\item der Eintrag wird vom alten Transformator akzeptiert
+\item der Eintrag wird nur vom neuen Transformator akzeptiert
+\item der Eintrag wird von beiden nicht akzeptiert
+\end{itemize}
+Wir erstellen also den folgenden Klassifizierer:
+\begin{lstlisting}
+package wortschatz2dbpedia.analyse;
+public class PeriodClassifier implements Classifier
+{
+  private final String[] classes =
+  {"different","equal","equal except for periods"}; 	
+  
+  @Override
+  public int classify(SampleEntry e)
+  {
+    if(e.resource.equals(e.label)) return 1;
+    if  (e.resource.replaceAll("\\.", "").
+     equals(e.label.replaceAll("\\.", ""))) return 2;
+    return 0;
+  }
+
+  @Override public String[] getClasses() {return classes;}
+}
+\end{lstlisting}
+In der Klasse Analyse setzen wir nun den neuen Klassifizierer ein:
+\begin{lstlisting}
+public static void main(String[] args) throws IOException
+{
+  SampleEntry[] sample = SampleEntry.readFromCSV("meineAusgewerteteStichprobe.csv");
+  Classifier[] classifiers = {new PeriodClassifier()};
+  ...
+}
+\end{lstlisting}
+Das Programm zeigt 
+\end{bsp}
+
+\subparagraph*{Format der ausgewerteten Stichprobe}
+
+\subsection{Paket datasource}
+\subsection{Paket gui}
+\subsection{Paket match}

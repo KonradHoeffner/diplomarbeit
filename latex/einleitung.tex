@@ -1,0 +1,145 @@
+\chapter*{Einleitung}
+\addcontentsline{toc}{chapter}{Einleitung}%damit es auch ohne Nummer im Inhaltsverzeichnis auftaucht
+
+Seit Jahrzehnten besteht die Vision eines sprechenden Computers -- zunächst nur als Gegenstand kühner Science Fiction, später jedoch als ernsthafte Motivation der Computerlinguistik,
+deren Forschungsgebiet die Entwicklung von Algorithmen zur Verarbeitung menschlicher Sprache ist. 
+Während das ultimative Ziel menschengleichen Sprachverständnisses schon aufgrund gänzlich unterschiedlicher Erfahrungswelten trotz intensiver Forschung noch unerreichbar scheint, sind bereits beeindruckende
+Fortschritte bei der Extraktion von Informationen aus geschriebener Sprache -- dem Textmining -- erreicht worden.
+Gleichzeitig wurden aber auch Erfahrungen über die prinzipiellen Hindernisse gesammelt, die einem umfassenden Verständnis entgegenstehen.
+So ist das Verständnis einer Grammatik nur ein kleiner Teil zum Verstehen eines Satzes, welches selbst in sehr einfachen Fällen ein großes Maß an Weltwissen voraussetzt.
+Dieses liegt jedoch nicht in einer für Maschinen verarbeitbaren Form vor.
+
+Die Einführung des \emph{Semantischen Webs} bringt dazu eine Gegenströmung, deren Ziel nicht das Beherrschen der komplexen natürlichen Sprachen durch Computer ist,
+ sondern der Aufbau eines gigantischen Netzes von Agenten und Wissensbasen, die durch die simple, formale, jedoch nicht zweckgebundene Sprache \emph{RDF} miteinander kommunizieren und damit vielfältige Aufgaben erledigen können.
+Weiterhin werden Schnittstellen entwickelt, die es dem Menschen so einfach wie möglich machen sollen, ihre Anfragen in dieser Sprache auszudrücken.
+Da es jedoch sehr aufwändig sein kann, bestehende natürlichsprachige Wissensquellen manuell in das Format des Semantischen Webs zu konvertieren,
+ ist dieses auf effiziente Methoden der natürlichen Sprachverarbeitung angewiesen, um bereits existierende Information aufzunehmen.
+
+Ziel dieser Arbeit ist es, ein Framework namens \emph{NLP2RDF} zu entwickeln, das eine Brücke zwischen natürlicher Sprachverarbeitung und dem Semantischen Web -- zwischen Syntax und Semantik -- schlägt.
+NLP2RDF enthält eine Pipline, die viele verschiedene Tools zur Verarbeitung natürlicher Sprache und Wissensquellen des Semantischen Webs integriert 
+und mithilfe dieser Tools aus geschriebenen Sätzen eine RDF-Struktur erstellt, welche explizit die implizite Bedeutung dieser Sätze ausdrückt.
+Zusätzlich zu Adaptern zu bereits bestehenden Anwendungen wurde ein Mapping namens \emph{Wortschatz2DBpedia} zwischen den statistischen Informationen des \emph{Projektes Deutscher Wortschatz} \citep{wortschatz} und dem semantischen Weltwissen aus \emph{DBpedia} \citep{dbpedia} erstellt und eine
+Wortsinndisambiguierung entwickelt.
+Weiterhin setzt NLP2RDF mit dem \emph{DL-Learner} \citep{dl-learner} Algorithmen des maschinellen Lernens ein, um aufgrund des generierten Hintergrundwissens Text zu klassifizieren.
+Damit lassen sich sowohl syntaktische ("`es handelt sich um einen Passivsatz"'), als auch semantische Features ("`der Text enthält Referenzen auf einen Politiker der Gegenwart"') bestimmen.
+Dieser Ansatz stellte sich schnell als so vielversprechend heraus, dass das Projekt mit Herrn Sebastian Hellmann im Rahmen seiner Dissertation \citep{nlp2rdf_hellmann_thesis} parallelentwickelt wird, um das volle Potential auszuschöpfen.
+In Folge dessen konzentriert sich diese Arbeit auf das Mappingmodul \emph{Wortschatz2DBpedia} und die Wortsinndisambiguierung.
+
+% Die Arbeit ist folgendermaßen aufgebaut: Im ersten Kapitel werden die Grundlagen beschrieben, die für das Verständnis der Arbeit notwendig sind.
+% Im zweiten Kapitel wird der Aufbau von NLP2RDF erklärt.
+% Das Mapping Wortschatz ... Kapitel ..
+
+
+%... nlp2rdf hilft beiden es nimmt sachen vom semantic web um nlp zu helfen (disambiguierung und so) und es nimmt sachen von nlp (parser wortschatz ,...) um dem wortschatz zu helfen
+
+\iffalse
+Die Klassifikation von geschriebenem Text ist ein Problem mit einem sehr vielfältigen Einsatzgebiet.
+E-Mail-Programme teilen eingehende Post in \emph{erwünschte} und \emph{nicht erwünschte} Nachrichten auf.
+Suchanfragen müssen zwischen \emph{relevanten} und \emph{nicht relevanten} Webseiten unterscheiden.
+Diktatorische Staaten versuchen, \emph{regimekritische} Botschaften zu unterdrücken.
+Literaten wollen herausfinden, ob ein lang verschollenes Buch von Shakespeare geschrieben wurde.
+Lehrer suchen Beispielsätze einer bestimmten Struktur, zum Beispiel \emph{Aktiv- und Passiv-}, \emph{Konditional-}, \emph{besonders lange}, \emph{besonders kurze} oder \emph{für eine bestimmte Zeit typische} Sätze.
+Herausgeber möchten zwischen \emph{lustigen} und \emph{nicht lustigen} Witzen, \emph{leckeren} und \emph{weniger leckeren} Kochrezepten,
+\emph{gesellschaftlich akzepterten} und \emph{nicht akzeptierten} Büchern differenzieren.
+Ein Freund der Kälte möchte seine Texte nach der gefühlt dort beschriebenen Temperatur sortieren.
+Studenten würden gerne zwischen einer \emph{gerade so abgabefähigen}, \emph{normalen}, \emph{herausragenden} Diplomarbeit und \emph{einer, die sie sofort um die Ohren geschlagen bekommen} unterscheiden können.
+
+Das einzige was all diese Anforderungen eint, ist dass sie komplett voneinander verschieden sind.
+Schon bei der blossen Betrachtung wird einem klar, dass man keineswegs alle Probleme der Textklassifikation wird lösen können.\footnote{"`Beschreibt dieser Text eine Turingmaschine, die hält?"', wäre so ein
+Problem der schwereren Kategorie.}
+Diese Arbeit beschränkt sich daher auf ein, jedoch immer noch sehr umfangreiches, Teilproblem.
+
+Im Kern des entwickelten Programmes steht ein Adapter zu einem Parser, der die Phrasenstruktur des eingegebenen Textes erkennt. Diese Struktur wird dann in RDF modelliert und wie ein Weihnachtsbaum 
+von beliebigen weiteren Tools mit Zusatzinformationen behängt.
+
+Mit entwickelt wurde dabei ein Tool namens \emph{Wortschatz2DBpedia}, welches über die maschinenverarbeitbaren Daten des DBpedia-Projekts die Brücke zum Weltwissen der Wikipedia schlägt.
+Aufgrund der offenen Struktur des Programmes ist es jedoch möglich und erwünscht, dass weitere Adapter zu anderen Tools hinzugefügt werden um das Einsatzgebiet zu erweitern.
+Um dies zu ermutigen, wurde es strukturiert programmiert, unter einer Open Source-Lizenz bei Google Code gehostet, gut kommentiert und im Rahmen dieser Arbeit auch dokumentiert
+(Details und Programmierbeispiele finden sich vor allem im Anhang).
+
+
+Diese Diplomarbeit beschränkt sich daher auf folgendes Teilproblem:
+\begin{itemize}
+\item gegeben sei eine Menge von positiven (P) und negativen (N) Beispielen, wobei nur P nicht leer sein darf
+\item die Sprache des Textes ist englisch oder deutsch
+\item Es gibt keine verschiedenen, sich überlappenden Kategorien. Entweder ein Text gehört der Menge X an, oder eben nicht.
+\item es existiert eine ausgezeichnete Trainingsmenge, bestehend aus positiven und eventuell auch negativen Beispielen
+\item die Zugehörigkeit zur Menge X lässt anhand von einfachen Definitionen, die in OWL formuliert sind, beschreiben
+\item die Gemeinsamkeit beruht entweder auf der Satzstruktur, oder lässt sich aus dem Weltwissen, das in der Wikipedia enthalten ist, schlussfolgern
+\end{itemize}
+
+
+%Es muss also ein all
+%Linguisten möchten alle Sätze aufspüren, die ein bestimmtes Sprachfeature aufweisen, Herausfinden, was die Gemeinsamkeit einer bestimmten Menge von Texten ist und 
+
+Ein modulares erweiterbares Programm wurde entwickelt, welches Tools der Sprachverarbeitung mit Methoden des Semantischen 
+Einsatzzweck ist die Klassifikation von Text jeder Art.
+
+Textklassifizierungsaufgaben jedweder Art können damit 
+%auf der einen Seite mit der LOD-Cloud des Semantic Web verbindet.
+Adaptoren für diese Tools sind also das Herzstück des Programmes. Je nach Einsatzzweck werden aus diesen Adaptoren dann diejenigen aktiviert, die als nötig erachtet werden.
+
+
+Kernstück des Programmes ist Adaptoren für diese Tools. 
+\fi
+
+% Einleitung von Christian Biemann:
+\iffalse
+In den nunmehr über 60 Jahren, die seit der Erfindung der elektronischen
+Rechenmaschine vergangen sind, wurde die Welt durch die Möglichkeit,
+immer      schneller    und   preiswerter  immer   größere   Berechnungen
+durchzuführen, nachhaltig verändert. Schon früh kamen in der Science-
+Fiction-Literatur sprechende Computer vor – Automaten, die verstehen,
+was ein Mensch oder ein anderes künstliches Wesen ihnen mittels
+natürlicher Sprache mitteilt, und die ihrerseits darauf in einer Weise
+antworten, als hätten sie begriffen, worum es ging. Der Mythos des
+allwissenden und alles könnenden Computers beherrscht nach wie vor die
+Köpfe der Menschen, auch wenn die Vision eines elektronischen
+Gesprächspartners immer noch wie Zukunftsmusik klingt.
+Weil Berechnungen in Schritten erfolgen, muß der menschliche Geist
+zunächst alle Schritte der Berechnung verstanden haben, bevor er sie in
+eine Maschine implementieren kann. Dabei hat sich die Implementierung
+von menschlicher Sprache, dem Charakteristikum des Menschen, in dem
+er sich von allen anderen Lebewesen auf dieser Erde unterscheidet, als
+besonders schwierig erwiesen. Vorliegende Arbeit soll auf dem Weg
+dorthin ihren bescheidenen Beitrag leisten.
+Ziel der Arbeit war es, semantische Relationen zu erlernen, um diese in
+natürlichsprachlichen Texten erkennen zu können. Es wurde ein
+Verfahren entwickelt, das mit Hilfe einer großen Textsammlung Wörter
+lernt, die in einer bestimmten Relation zu anderen Wörtern stehen. Hierbei
+soll sich durch ein kleines vorausgesetztes Grundwissen hoher Datenertrag
+ernten lassen.
+Die Arbeit ist folgendermaßen aufgebaut: Im ersten Kapitel wird eine
+Einordnung der Arbeit in die beteiligten wissenschaftlichen Gebiete
+                     Es   folgt   eine   Übersicht über   die  verwendete
+vorgenommen.
+                                       -3-
+-
+Textsammlung, sowie über verschiedene semantische Relationen, und wie
+diese beschaffen sein müssen, damit sie für das Verfahren geeignet sind.
+Im zweiten Kapitel wird der dem Verfahren zugrundeliegende
+Algorithmus erklärt. Nach einigen Vorüberlegungen zur theoretischen
+Beschaffenheit der gesuchten Relationen wird der Algorithmus im Detail
+dargelegt. Es folgen Betrachtungen zum erwarteten Verhalten, sowie zu
+Voraussetzungen, die für den Erfolg des Verfahrens notwendig sind.
+Die durch eine Implementierung des Verfahrens erzielten Ergebnisse
+werden in Kapitel drei vorgestellt. Hauptgegenstand der Untersuchungen
+war die semantische Relation, die zwischen Vor- und Nachnamen besteht.
+Das Verhalten der Implementierung wurde aber auch an anderen
+Relationen untersucht. Das vierte Kapitel enthält Ausblicke zu weiteren
+Relationen, außerdem werden Verbesserungen und andere Anwendungs-
+gebiete diskutiert. Eine Anwendung des Verfahrens in leicht modifizierter
+Form findet sich im fünften Kapitel. Ziel dieser Anwendung war es,
+Personennamen in Texten zu markieren und die Berufe der Personen der
+aktuellen Zeit zu finden. Im sechsten Kapitel finden sich abschließende
+Bemerkungen.
+\fi
+\iffalse
+\subsection{Ziele}
+Ziel ist es, beliebige Sprachfeatures mit Hilfe vorgegebener Texte zu erlernen.
+Dabei sollen anhand von positiven und negativen Beispielen Regeln in einer Beschreibungslogik aufgestellt werden.
+Dazu soll ein Programm geschaffen werden, welches ein Adapter für bereits existierende Tools zum Aufbereiten von Text ist.
+Ein Chunker, ein Parser und eine Verbindung zu DBpedia sollten dabei enthalten sein, jedoch mit der Möglichkeit, jederzeit neue Teile hinzuzufügen.
+Eingegebener Text wird dabei erst in eine einfache RDF-Struktur umgewandelt und dann beliebig mit Informationen aus den gewählten Tools erweitert.
+Der DL-Learner, ein Programm, welches Konzepte in Beschreibungslogiken lernt, erzeugt dann unter Eingabe dieser RDF-Strukturen die gesuchten Regeln.
+\fi

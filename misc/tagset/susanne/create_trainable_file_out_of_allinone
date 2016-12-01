@@ -1,0 +1,6 @@
+#!/bin/bash
+#cat allinone.txt | grep "brk>" -v > allinone_without_breaks.txt
+cat allinone.txt | sed "s|\[O\[|\[|g" | sed "s|\[O\.|\.|g" | sed "s|\.O\]|\.|g" > allinone_without_o.txt
+perl susanne2penn.pl allinone_without_breaks_without_o.txt > allinone_penn.txt
+cat allinone_penn.txt | sed "s|)\s*(YF +\.)|(YF +\.))\n|g" > allinone_penn_inner_fullstop.txt
+exit

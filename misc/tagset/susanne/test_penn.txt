@@ -1,0 +1,1 @@
+(S (NP (N I) ) (VP (V spoke) ))

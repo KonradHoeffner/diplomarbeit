@@ -1,0 +1,1057 @@
+%!PS-Adobe-2.0
+%%Creator: dot version 2.8 (Tue Dec  9 22:37:01 UTC 2008)
+%%For: (nobody) nobody
+%%Title: dotfile
+%%Pages: (atend)
+%%BoundingBox: 36 36 1188 392
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+/alignedtext {			% width adj text
+	/text exch def
+	/adj exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			text stringwidth pop adj mul 0 rmoveto
+		} if
+		[] 0 setdash
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+%%Page: 1 1
+%%PageBoundingBox: 36 36 1188 392
+%%PageOrientation: Portrait
+gsave
+36 36 1152 356 boxprim clip newpath
+36 36 translate
+0 0 1 beginpage
+1.0000 set_scale
+4 4 translate 0 rotate
+0.000 0.000 1.000 graphcolor
+0.000 0.000 1.000 graphcolor
+newpath -6 -6 moveto
+-6 354 lineto
+1150 354 lineto
+1150 -6 lineto
+closepath
+fill
+0.000 0.000 1.000 graphcolor
+newpath -6 -6 moveto
+-6 354 lineto
+1150 354 lineto
+1150 -6 lineto
+closepath
+stroke
+0.000 0.000 0.000 graphcolor
+10.00 /Courier set_font
+% http://nlp2rdf.org/s1
+[ /Rect [ 1 135 151 171 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/s1) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+76 153 74 18 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+12 150 moveto
+(http://nlp2rdf.org/s1)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w1
+[ /Rect [ 485 216 647 252 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/s1w1) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+566 234 80 18 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+496 231 moveto
+(http://nlp2rdf.org/s1w1)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1->http://nlp2rdf.org/s1w1
+[ /Rect [ 234 226 391 237 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 110 166 116 172 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 483 227 489 233 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 113 169 moveto
+130 176 151 183 170 188 curveto
+274 213 395 224 476 229 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 476 232 moveto
+486 230 lineto
+476 226 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 476 232 moveto
+486 230 lineto
+476 226 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+233 228 moveto
+(http://nlp2rdf.org/hasWord)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w2
+[ /Rect [ 485 278 647 314 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/s1w2) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+566 296 80 18 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+496 293 moveto
+(http://nlp2rdf.org/s1w2)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1->http://nlp2rdf.org/s1w2
+[ /Rect [ 234 297 391 308 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 87 168 93 174 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 482 296 488 302 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 90 171 moveto
+106 191 136 224 170 241 curveto
+267 287 392 297 475 299 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 475 303 moveto
+485 299 lineto
+475 296 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 475 303 moveto
+485 299 lineto
+475 296 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+233 299 moveto
+(http://nlp2rdf.org/hasWord)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w3
+[ /Rect [ 485 108 647 144 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/s1w3) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+566 126 80 18 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+496 123 moveto
+(http://nlp2rdf.org/s1w3)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1->http://nlp2rdf.org/s1w3
+[ /Rect [ 234 142 391 153 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 140 141 146 147 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 481 124 487 130 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 143 144 moveto
+152 144 161 143 170 142 curveto
+275 133 394 129 474 127 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 474 131 moveto
+484 127 lineto
+474 124 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 474 131 moveto
+484 127 lineto
+474 124 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+233 144 moveto
+(http://nlp2rdf.org/hasWord)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w4
+[ /Rect [ 485 162 647 198 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/s1w4) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+566 180 80 18 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+496 177 moveto
+(http://nlp2rdf.org/s1w4)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1->http://nlp2rdf.org/s1w4
+[ /Rect [ 234 173 391 184 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 147 154 153 160 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 483 173 489 179 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 150 157 moveto
+237 162 382 170 476 175 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 476 178 moveto
+486 176 lineto
+476 172 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 476 178 moveto
+486 176 lineto
+476 172 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+233 175 moveto
+(http://nlp2rdf.org/hasWord)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/Sentence
+[ /Rect [ 473 54 659 90 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/Sentence) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+566 72 92 18 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+484 69 moveto
+(http://nlp2rdf.org/Sentence)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1->http://nlp2rdf.org/Sentence
+[ /Rect [ 171 112 454 123 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 104 133 110 139 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 469 70 475 76 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 107 136 moveto
+125 128 148 117 170 112 curveto
+268 86 381 77 462 73 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 462 77 moveto
+472 73 lineto
+462 70 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 462 77 moveto
+472 73 lineto
+462 70 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+170 114 moveto
+(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% Literal_1
+gsave 10 dict begin
+newpath 637 36 moveto
+495 36 lineto
+495 0 lineto
+637 0 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+502 15 moveto
+(Pfannkuchen sind gut.)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1->Literal_1
+[ /Rect [ 186 58 439 69 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 85 132 91 138 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 491 8 497 14 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 88 135 moveto
+104 112 134 75 170 58 curveto
+271 10 401 6 484 10 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 484 13 moveto
+494 11 lineto
+484 7 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 484 13 moveto
+494 11 lineto
+484 7 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+185 60 moveto
+(http://www.w3.org/2000/01/rdf-schema#label)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% Literal_2
+gsave 10 dict begin
+newpath 1103 283 moveto
+1021 283 lineto
+1021 247 lineto
+1103 247 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+1028 262 moveto
+(Pfannkuchen)
+[6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w1->Literal_2
+[ /Rect [ 694 257 947 268 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 642 236 648 242 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 1017 259 1023 265 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 645 239 moveto
+747 246 923 256 1010 261 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 1010 264 moveto
+1020 262 lineto
+1010 258 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 1010 264 moveto
+1020 262 lineto
+1010 258 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+693 259 moveto
+(http://www.w3.org/2000/01/rdf-schema#label)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/Word
+[ /Rect [ 981 193 1143 229 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://nlp2rdf.org/Word) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+1062 211 80 18 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+992 208 moveto
+(http://nlp2rdf.org/Word)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w1->http://nlp2rdf.org/Word
+[ /Rect [ 679 227 962 238 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 643 227 649 233 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 979 212 985 218 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 646 230 moveto
+735 226 879 220 972 215 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 972 219 moveto
+982 215 lineto
+972 212 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 972 219 moveto
+982 215 lineto
+972 212 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+678 229 moveto
+(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w2->http://nlp2rdf.org/Word
+[ /Rect [ 679 293 962 304 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 645 292 651 298 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 1001 221 1007 227 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 648 295 moveto
+756 293 936 288 962 272 curveto
+977 262 967 249 980 238 curveto
+984 234 990 231 995 228 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 996 231 moveto
+1004 224 lineto
+993 225 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 996 231 moveto
+1004 224 lineto
+993 225 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+678 295 moveto
+(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% Literal_3
+gsave 10 dict begin
+newpath 1089 348 moveto
+1035 348 lineto
+1035 312 lineto
+1089 312 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+1049 327 moveto
+(sind)
+[6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w2->Literal_3
+[ /Rect [ 694 324 947 335 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 636 301 642 307 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 1032 326 1038 332 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 639 304 moveto
+652 305 666 307 678 308 curveto
+805 317 956 325 1025 329 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 1025 333 moveto
+1035 329 lineto
+1025 326 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 1025 333 moveto
+1035 329 lineto
+1025 326 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+693 326 moveto
+(http://www.w3.org/2000/01/rdf-schema#label)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w3->http://nlp2rdf.org/Word
+[ /Rect [ 679 136 962 147 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 637 115 643 121 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 1000 195 1006 201 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 640 118 moveto
+740 109 913 100 962 136 curveto
+981 149 964 168 980 184 curveto
+984 188 989 191 994 194 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 992 197 moveto
+1003 198 lineto
+995 191 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 992 197 moveto
+1003 198 lineto
+995 191 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+678 138 moveto
+(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% Literal_4
+gsave 10 dict begin
+newpath 1089 110 moveto
+1035 110 lineto
+1035 74 lineto
+1089 74 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+1052 89 moveto
+(gut)
+[6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w3->Literal_4
+[ /Rect [ 694 93 947 104 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 613 109 619 115 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 1032 86 1038 92 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 616 112 moveto
+630 108 646 103 660 99 curveto
+669 96 670 94 678 93 curveto
+804 72 956 82 1025 88 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 1025 91 moveto
+1035 89 lineto
+1025 85 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 1025 91 moveto
+1035 89 lineto
+1025 85 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+693 95 moveto
+(http://www.w3.org/2000/01/rdf-schema#label)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w4->http://nlp2rdf.org/Word
+[ /Rect [ 679 200 962 211 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 644 179 650 185 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 987 199 993 205 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/1999/02/22-rdf-syntax-ns#type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 647 182 moveto
+727 185 853 191 962 200 curveto
+968 201 974 201 980 201 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 980 204 moveto
+990 202 lineto
+980 198 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 980 204 moveto
+990 202 lineto
+980 198 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+678 202 moveto
+(http://www.w3.org/1999/02/22-rdf-syntax-ns#type)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+% Literal_5
+gsave 10 dict begin
+newpath 1089 175 moveto
+1035 175 lineto
+1035 139 lineto
+1089 139 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+1062 154 moveto 6.0 -0.5 (.) alignedtext
+end grestore
+end grestore
+% http://nlp2rdf.org/s1w4->Literal_5
+[ /Rect [ 694 161 947 172 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 623 165 629 171 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 1032 153 1038 159 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (http://www.w3.org/2000/01/rdf-schema#label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 626 168 moveto
+643 165 661 162 678 161 curveto
+804 149 956 153 1025 156 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 1025 160 moveto
+1035 156 lineto
+1025 153 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 1025 160 moveto
+1035 156 lineto
+1025 153 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+693 163 moveto
+(http://www.w3.org/2000/01/rdf-schema#label)
+[6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6]
+xshow
+end grestore
+end grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

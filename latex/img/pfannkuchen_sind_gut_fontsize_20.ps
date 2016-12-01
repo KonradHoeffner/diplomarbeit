@@ -1,0 +1,1069 @@
+%!PS-Adobe-2.0
+%%Creator: dot version 2.8 (Tue Dec  9 22:37:01 UTC 2008)
+%%For: (nobody) nobody
+%%Title: dotfile
+%%Pages: (atend)
+%%BoundingBox: 36 36 1014 474
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+/alignedtext {			% width adj text
+	/text exch def
+	/adj exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			text stringwidth pop adj mul 0 rmoveto
+		} if
+		[] 0 setdash
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+%%Page: 1 1
+%%PageBoundingBox: 36 36 1014 474
+%%PageOrientation: Portrait
+gsave
+36 36 978 438 boxprim clip newpath
+36 36 translate
+0 0 1 beginpage
+1.0000 set_scale
+4 4 translate 0 rotate
+0.000 0.000 1.000 graphcolor
+0.000 0.000 1.000 graphcolor
+newpath -6 -6 moveto
+-6 436 lineto
+976 436 lineto
+976 -6 lineto
+closepath
+fill
+0.000 0.000 1.000 graphcolor
+newpath -6 -6 moveto
+-6 436 lineto
+976 436 lineto
+976 -6 lineto
+closepath
+stroke
+0.000 0.000 0.000 graphcolor
+20.00 /Courier set_font
+% nlp2rdf:s1
+[ /Rect [ 0 147 150 191 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:s1) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+75 169 74 21 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+14 162 moveto
+(nlp2rdf:s1)
+[12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w1
+[ /Rect [ 416 247 590 291 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:s1w1) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+503 269 86 21 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+430 262 moveto
+(nlp2rdf:s1w1)
+[12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1->nlp2rdf:s1w1
+[ /Rect [ 169 252 350 275 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 107 186 113 192 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 417 259 423 265 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 110 189 moveto
+127 198 148 208 168 214 curveto
+248 239 342 254 410 261 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 410 264 moveto
+420 262 lineto
+410 258 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 410 264 moveto
+420 262 lineto
+410 258 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+168 256 moveto
+(nlp2rdf:hasWord)
+[12 12 12 12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w2
+[ /Rect [ 416 339 590 383 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:s1w2) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+503 361 86 21 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+430 354 moveto
+(nlp2rdf:s1w2)
+[12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1->nlp2rdf:s1w2
+[ /Rect [ 169 341 350 364 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 85 188 91 194 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 417 352 423 358 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 88 191 moveto
+103 216 132 257 168 279 curveto
+241 324 338 344 410 354 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 410 357 moveto
+420 355 lineto
+410 351 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 410 357 moveto
+420 355 lineto
+410 351 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+168 345 moveto
+(nlp2rdf:hasWord)
+[12 12 12 12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w3
+[ /Rect [ 416 116 590 160 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:s1w3) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+503 138 86 21 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+430 131 moveto
+(nlp2rdf:s1w3)
+[12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1->nlp2rdf:s1w3
+[ /Rect [ 169 151 350 174 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 132 153 138 159 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 413 134 419 140 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 135 156 moveto
+146 154 157 152 168 151 curveto
+248 141 339 138 406 137 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 406 141 moveto
+416 137 lineto
+406 134 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 406 141 moveto
+416 137 lineto
+406 134 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+168 155 moveto
+(nlp2rdf:hasWord)
+[12 12 12 12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w4
+[ /Rect [ 416 178 590 222 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:s1w4) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+503 200 86 21 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+430 193 moveto
+(nlp2rdf:s1w4)
+[12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1->nlp2rdf:s1w4
+[ /Rect [ 169 187 350 210 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 145 171 151 177 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 416 191 422 197 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:hasWord) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 148 174 moveto
+220 180 330 187 409 193 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 409 196 moveto
+419 194 lineto
+409 190 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 409 196 moveto
+419 194 lineto
+409 190 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+168 191 moveto
+(nlp2rdf:hasWord)
+[12 12 12 12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:Sentence
+[ /Rect [ 392 54 614 98 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:Sentence) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+503 76 110 21 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+406 69 moveto
+(nlp2rdf:Sentence)
+[12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1->nlp2rdf:Sentence
+[ /Rect [ 211 111 308 134 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 98 145 104 151 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 389 72 395 78 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 101 148 moveto
+118 135 143 119 168 111 curveto
+236 87 316 78 382 75 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 382 79 moveto
+392 75 lineto
+382 72 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 382 79 moveto
+392 75 lineto
+382 72 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+210 115 moveto
+(rdf:type)
+[12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% Literal_1
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+newpath 637 36 moveto
+369 36 lineto
+369 0 lineto
+637 0 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+376 11 moveto
+(Pfannkuchen sind gut.)
+[12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1->Literal_1
+[ /Rect [ 199 49 320 72 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 82 144 88 150 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 365 4 371 10 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 85 147 moveto
+99 119 128 71 168 49 curveto
+226 18 296 8 358 7 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 358 11 moveto
+368 7 lineto
+358 4 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 358 11 moveto
+368 7 lineto
+358 4 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+198 53 moveto
+(rdfs:label)
+[12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% Literal_2
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+newpath 957 333 moveto
+809 333 lineto
+809 297 lineto
+957 297 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+816 308 moveto
+(Pfannkuchen)
+[12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w1->Literal_2
+[ /Rect [ 657 300 778 323 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 579 276 585 282 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 805 303 811 309 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 582 279 moveto
+645 287 733 297 798 305 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 798 308 moveto
+808 306 lineto
+798 302 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 798 308 moveto
+808 306 lineto
+798 302 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+656 304 moveto
+(rdfs:label)
+[12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:Word
+[ /Rect [ 796 224 970 268 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (nlp2rdf:Word) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+883 246 86 21 ellipse_path
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+810 239 moveto
+(nlp2rdf:Word)
+[12 12 12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w1->nlp2rdf:Word
+[ /Rect [ 669 258 766 281 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 585 261 591 267 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 795 248 801 254 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 588 264 moveto
+648 260 727 256 788 252 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 788 255 moveto
+798 251 lineto
+788 249 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 788 255 moveto
+798 251 lineto
+788 249 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+668 262 moveto
+(rdf:type)
+[12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w2->nlp2rdf:Word
+[ /Rect [ 669 353 766 376 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 587 356 593 362 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 828 261 834 267 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 590 359 moveto
+659 356 749 348 778 327 curveto
+794 315 783 301 796 288 curveto
+804 280 813 274 822 269 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 824 272 moveto
+831 264 lineto
+821 266 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 824 272 moveto
+831 264 lineto
+821 266 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+668 357 moveto
+(rdf:type)
+[12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% Literal_3
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+newpath 915 425 moveto
+851 425 lineto
+851 389 lineto
+915 389 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+858 400 moveto
+(sind)
+[12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w2->Literal_3
+[ /Rect [ 657 396 778 419 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 573 370 579 376 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 847 401 853 407 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 576 373 moveto
+601 377 630 382 656 385 curveto
+720 392 794 400 840 403 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 840 406 moveto
+850 404 lineto
+840 400 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 840 406 moveto
+850 404 lineto
+840 400 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+656 400 moveto
+(rdfs:label)
+[12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w3->nlp2rdf:Word
+[ /Rect [ 669 145 766 168 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 558 119 564 125 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 826 225 832 231 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 561 122 moveto
+621 108 716 98 778 145 curveto
+800 161 779 183 796 204 curveto
+803 212 811 218 820 223 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 819 226 moveto
+829 228 lineto
+822 220 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 819 226 moveto
+829 228 lineto
+822 220 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+668 149 moveto
+(rdf:type)
+[12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% Literal_4
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+newpath 910 103 moveto
+856 103 lineto
+856 67 lineto
+910 67 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+864 78 moveto
+(gut)
+[12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w3->Literal_4
+[ /Rect [ 657 86 778 109 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 579 125 585 131 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 853 75 859 81 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 582 128 moveto
+601 124 621 117 638 107 curveto
+649 100 645 91 656 86 curveto
+717 57 799 66 846 76 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 846 79 moveto
+856 78 lineto
+847 73 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 846 79 moveto
+856 78 lineto
+847 73 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+656 90 moveto
+(rdfs:label)
+[12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% nlp2rdf:s1w4->nlp2rdf:Word
+[ /Rect [ 669 224 766 247 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 585 202 591 208 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 816 228 822 234 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdf:type) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 588 205 moveto
+643 208 715 215 778 224 curveto
+788 226 799 227 809 229 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 809 232 moveto
+819 231 lineto
+810 226 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 809 232 moveto
+819 231 lineto
+810 226 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+668 228 moveto
+(rdf:type)
+[12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+% Literal_5
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+newpath 910 195 moveto
+856 195 lineto
+856 159 lineto
+910 159 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.667 1.000 1.000 nodecolor
+883 170 moveto 10.0 -0.5 (.) alignedtext
+end grestore
+end grestore
+% nlp2rdf:s1w4->Literal_5
+[ /Rect [ 657 178 778 201 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 572 185 578 191 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+[ /Rect [ 853 173 859 179 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI (rdfs:label) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+0.333 1.000 0.392 edgecolor
+newpath 575 188 moveto
+601 184 630 180 656 178 curveto
+723 172 800 174 846 176 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.333 1.000 0.392 edgecolor
+newpath 846 180 moveto
+856 176 lineto
+846 173 lineto
+closepath
+fill
+0.333 1.000 0.392 edgecolor
+newpath 846 180 moveto
+856 176 lineto
+846 173 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 1.000 1.000 edgecolor
+656 182 moveto
+(rdfs:label)
+[12 12 12 12 12 12 12 12 12 12]
+xshow
+end grestore
+end grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

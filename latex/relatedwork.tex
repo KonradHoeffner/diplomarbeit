@@ -1,0 +1,47 @@
+\chapter{Verwandte Arbeiten}\label{relatedwork}
+%http://www.dcs.shef.ac.uk/~sam/stringmetrics.html -> string metriken
+
+%Preliminary Results in Tag Disambiguation using DBpedia
+In \citet{tag_disambiguation_dbpedia} werden wie in dieser Arbeit DBpedia-Entitäten als Kandidaten mit einem Ähnlichkeitsmaß des Information Retrieval disambiguiert.
+Dabei dienen jedoch keine ganzen Sätze sondern Tags aus einer Tagmenge als Eingabedaten.
+Die Berechnung der Ähnlichkeit erfolgt nicht über semantische Informationen in Form der diesen Kandidaten zugeordneten Tripel genutzt, sondern über eine Zuordnung von
+weiteren Tags, die als Kontext auf einen bestimmten Sinn eines Tags auftreten.
+
+\citet{cucerzan07} beschreibt eine Disambiguierung mit Named Entities (Eigennamen) basierend auf Wikipedia-Daten.
+Die dort verwendeten Testdaten sind frei verfügbar\footnote{\url{http://research.microsoft.com/en-us/um/people/silviu/WebAssistant/TestData/}} und werden daher zur Verifikation der Disambiguierungsmethode in dieser Arbeit verwendet.
+Es handelt sich dabei um die je zwei zuoberst angezeigten Artikel auf der Webseite von MSNBC\footnote{\url{http://www.msnbc.msn.com/}} am 2. Januar 2007 in den damaligen zehn Nachrichtenkategorien
+Wirtschaft, U.S.-Politik, Unterhaltung, Gesundheit, Sport, Wissenschaft und Technik, Reisen, Fernsehnachrichten, Nachrichten über die USA und weltweite Nachrichten.
+In diesen Artikeln wurden 797 Named Entities (Eigennamen) bestimmt und als Oberflächenformen zur Bestimmung von Bedeutungskandidaten genutzt, welche 
+in Form von Wikipedia-Artikelnamen vorliegen. Diese Kandidaten dienen nun als Ausgangspunkt für eine Disambiguierung, die auf 
+den den Namen der Wikipediaartikeln, den Redirects und Disambiguierungsseiten basiert.
+Um die Disambiguierung zu evaluieren, existiert eine manuell erstellte Zuordnung der Oberflächenformen zu ihren korrekten Kandidaten, wobei 755 dieser Oberflächenformen dazu geeignet sind
+und in 650 Fällen diese Kandidaten auch in der Wikipedia auf dem verwendeten Stand vom September 2006 existieren, was einem Anteil von \valunit{81.5558}{\%} entspricht.
+Das dort beschriebene System erreichte diesen Testdaten eine Genauigkeit von \valunit{91.4}{\%}.
+In DBpedia 3.5, die in dieser Arbeit zur Evaluierung verwendet wird, existieren hingegen 651 dieser Kandidaten, wobei jedoch 143 davon Redirects sind, vermutlich weil sich der Name dieser Artikel 
+inzwischen geändert hat. In diesen Fällen wurde das Ziel des Redirects als gültige Bedeutung definiert.
+
+% and the proposed system could not hypothesize a
+% disambiguation for them. The accuracy on the re-
+% maining 5,131 surface forms was 86.2% for the
+%                                                           91.4%, versus a
+% baseline system and 88.3% for the proposed sys-
+%                                                     51.7%
+% tem. A McNemar test showed that the difference is
+% not significant, the main cause being that the ma-
+% jority of the test surface forms were unambiguous.
+% When restricting the test set only to the 1,668 am-
+% biguous surface forms, the difference in accuracy
+% between the two systems is significant at p = 0.01.
+% An error analysis showed that the Wikipedia set
+% used as gold standard contained relatively many
+% surface forms with erroneous or out-of-date links,
+% many of them being correctly disambiguated by
+% the proposed system (thus, counted as errors). For
+% example, the test page “The Gods (band)” links to
+% Paul Newton, the painter, and Uriah Heep, which is
+% a disambiguation page, probably because the origi-
+% nal pages changed over time, while the proposed
+% system correctly hypothesizes links to Paul New-
+% ton (musician) and Uriah Heep (band).
+
+%Dabei werden jedoch keine semantischen 

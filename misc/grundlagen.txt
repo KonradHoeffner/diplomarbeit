@@ -1,0 +1,22 @@
+jeweils grob was es macht
+schwerpunkt liegt auf rdf
+linked data gut erklären, stanford parser und corpus nur zeigen , dass ichs verstanden hab
+
+rdf - linked data linkeddata.org
+
+stanford parser
+
+corpus
+
+chunker
+
+mapping
+- dissertation von andreas thor (als quelle angeben)
+-> die folien davon sind die zusammenfassung davon 
+
+wortschatz
+- da gibts ein paper auf der corpura download seite
+
+dl learner
+- dl-learner.org
+- verstehen und wiedergeben

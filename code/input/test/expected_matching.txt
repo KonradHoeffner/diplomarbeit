@@ -1,0 +1,4 @@
+Agile_Knowledge_Engineering_and_Semantic_Web	sicher	AKSW
+Betriebliche_Informationssysteme	sicher	BIS
+Linked_Data	sicher	Linked Data
+Berliner_Pfannkuchen	unsicher	pfannkuchen

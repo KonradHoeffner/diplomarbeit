@@ -1,0 +1,2 @@
+#!/bin/bash
+sed 's|\([^\t]\+\)\t\([^\t]\+\)|<a href="http://dbpedia.org/page/\1">\1</a>\t<a href="http://corpora.uni-leipzig.de/cgi-bin/en/wort_www?site=10\&Wort=\2\&cs=1">\2</a><br/>|'

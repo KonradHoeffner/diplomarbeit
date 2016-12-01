@@ -1,0 +1,1 @@
+(S (Noun I)(Verb am)(Final .))

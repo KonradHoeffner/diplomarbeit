@@ -1,0 +1,54 @@
+
+\iffalse
+Unglücklicherweise konnte keine Ontologie für das Penn Treebank Tag Set gefunden werden. Aufgrund des bereits großen Umfanges dieser Arbeit und des Umstandes, das der Autor kein ausgebildeter Sprachwissenschaftler ist,
+ erschien es auch nicht praktikabel, solch eine Ontologie selbst zu erstellen.
+Das Umlernen eines POS-Taggers auf ein anderes Tagset ist beim Stanford Parser jedoch möglich, wenn man ihn mit POS-annotierten Trainingstexten versorgt.\footnote{\url{http://nlp.stanford.edu/software/parser-faq.shtml#f}}
+Es war also nur noch eine beliebige für das Englische geeignete Ontologie gesucht, für die es POS-annotierten Text gibt.
+Die Wahl fiel dabei auf das Susanne\footnote{Surface and underlying structural analysis of natural English}-Tagset.
+Sowohl das Susanne Corpus, eine passende Treebank\footnote{\url{www.grsampson.net/Resources.html}} als auch die Ontologie\footnote{\url{http://141.89.100.105/owl-docu/susa.html}} sind frei verfügbar.
+
+In der FAQ des Stanford Parsers wird ein Satz angegeben, der das erwartete Format deutlich macht:
+
+\begin{verbatim}
+`The/DT quick/JJ brown/JJ fox/NN jumped/VBD over/IN the/DT lazy/JJ dog/NN ./.
+\end{verbatim}
+
+Die Treebank besteht jedoch aus mehreren Dateien, welche Zeilen wie diese enhalten:
+\begin{verbatim}
+G12:0030.27	-	PPHS1m	He	he	[S[Nas:s.Nas:s]
+G12:0030.30	-	VBDZ	was	be	[Vsu.
+G12:0030.33	-	VVGv	waiting	wait	.Vsu]S]
+G12:0030.39	-	YF	+.	-	.O]
+\end{verbatim}
+Das gewünschte Format kann daraus jedoch erzeugt werden.
+
+Zusammenführen aller relevanten Dateien in Eine:
+\begin{verbatim}
+find | sed "s/\.\///" |
+egrep -v "lexicon|documentation|\." |
+xargs cat >>allinone.txt
+\end{verbatim}
+Auswählen der relevanten Spalten:
+\begin{verbatim}
+cat allinone.txt | cut -f3,4 > allinone_tag_and_word.csv
+\end{verbatim}
+Vertauschen der Spalten und Einsetzen des Trennzeichens:
+\begin{verbatim}
+cat allinone_tag_and_word.csv |
+sed "s/\([^\t]*\)\t\([^\t]*\)/\2\/\1/"
+> allinone_stanfordformat.txt
+\end{verbatim}
+Alle Zeilenumbrüche entfernen:
+\begin{verbatim}
+cat allinone_stanfordformat.txt |
+tr "\n" " " > allinone_stanfordformat_oneline.txt
+\end{verbatim}
+Zeilenumbrüche nach dem Satzende hinzufügen um das endgültige Format zu bekommen:
+\begin{verbatim}
+cat allinone_stanfordformat_oneline.txt |
+sed "s/+\.\/YF /+\.\/YF\\n/g"
+> susanne_treebank_readyfortraining.txt
+\end{verbatim}
+\todo{was ist mit einem trainierten parser model für die susa.owl?}
+\todo{was ist mit einem trainierten parser model für die susa.owl?}
+\fi

@@ -1,0 +1,78 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[paper=a4paper,top=30mm,bottom=30mm,twoside]{geometry}
+\usepackage[ngerman]{babel}
+\selectlanguage{ngerman}
+
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+ 
+
+\begin{titlepage}
+\newcommand{\TITLE}{A modular SPARQL Parser Architecture}
+\newcommand{\AUTHOR}{Konrad H\"offner}
+\newcommand{\SUBJECTA}{For deployment in e-commerce systems}
+\newcommand{\SUBJECTB}{}
+
+\newcommand{\SUBJECT}{\SUBJECTA \SUBJECTB}
+\newcommand{\KEYWORDS}{Semantic Web, SPARQL, RDF, Word Sense Disambiguation, Mapping}
+
+
+\thispagestyle{empty}
+\renewcommand{\baselinestretch}{1}
+\fontsize{12pt}{14pt}\selectfont
+\vspace*{1cm}
+
+% HEADER
+\centerline{
+\begin{minipage}{15cm}
+   \centerline{\uppercase{Universit\"at Leipzig}}
+\vspace*{0.2cm}
+   \centerline{Fakultät für Mathematik und Informatik}
+\vspace*{0.2cm}
+   \centerline{Institut für Informatik}
+\vspace*{0.2cm}
+   \centerline{Forschungsgruppe Agile Knowledge Engineering \& Semantic Web (AKSW)}
+\end{minipage}}\par
+\vspace*{1cm}
+% OFFICIAL DRAFT
+%\ifdraft
+%   \vspace*{2cm}
+%   \centerline{
+%   \setlength{\doublerulesep}{3mm}
+%   \setlength{\arrayrulewidth}{1mm}
+%   \renewcommand{\arraystretch}{2}
+%   \begin{tabular}{p{5cm}|c|p{5cm}}\hline \hline
+%      & {\bf {\Huge {\sc D~R~A~F~T}}} & \\ \hline \hline 
+%   \end{tabular}
+%   }
+%   \vspace*{2cm}
+%\else
+%\vspace*{4.5cm}
+%\fi
+
+% CENTER
+\centerline{\fontsize{20pt}{20pt} {\bf \TITLE}}\par\vspace*{0.3cm}
+\centerline{\fontsize{14pt}{14pt} {\bf \SUBJECTA}}\par\vspace*{0.3cm}
+\centerline{\fontsize{14pt}{14pt} {\bf \SUBJECTB}}\par\vspace*{3cm}
+\centerline{{\large {\bf Diplomarbeit}}}\par
+
+% BOTTOM
+\vfill
+
+\noindent\begin{minipage}[t]{.49\linewidth}
+Leipzig, Juni 2010\\[2ex]
+Thesis Supervisors:\\
+Prof. Dr. Inf. habil. K. F\"ahnrich\\
+Dipl. Inf. Sebastian Hellmann\\
+%Dipl. Inf. Someone Else
+\end{minipage}\hfill
+\begin{minipage}[t]{5cm}
+vorgelegt von\\[2ex]
+\AUTHOR\\
+geboren am 24.03.1983\\[2ex]
+Studiengang Informatik
+\end{minipage}\par
+
+\end{titlepage} 
+\end{document}

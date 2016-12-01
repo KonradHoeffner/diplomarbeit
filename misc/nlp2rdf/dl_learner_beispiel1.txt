@@ -1,0 +1,71 @@
+Ein Anwendungsfall
+
+Ein Wort kann je nach Kontext verschiedene Bedeutungen haben. Die Auflösung der Mehrdeutigkeit in einem bestimmten Kontext nennt man Disambiguierung.
+Nehmen wir an, wir möchten das Wort "beschäftigen" im folgenden Satz disambiguieren:
+
+"Wir beschäftigen uns mit sonnigen Sandstränden."
+
+Das Verb "beschäftigen" hat folgende möglichen Bedeutungen:
+
+- "Anna hat sich in der Schule ausgiebig mit der Nazizeit beschäftigt."
+Anna hat sich inhaltlich mit der Nazizeit auseinandergesetzt. Eine Person beschäftigt sich mit einem Thema, sie hat befasst sich mit ihm und lernt etwas darüber.
+
+- "Google beschäftigt Peter seit 2007."
+Hier ist gemeint, dass Peter bei Google arbeitet. Eine Person oder eine Firma beschäftigt also einen Angestellten, sie hat ein Arbeitsverhältnis mit ihm.
+
+- "Herr Dr. Obermüller ist leider nicht zu sprechen, er ist beschäftigt."
+Herr Dr. Obermüller hat gerade zu tun. Eine Person ist beschäftigt, arbeitet gerade an einer Aufgabe und möchte nicht gestört werden.
+
+Um zu entscheiden, welcher dieser Fälle zutrifft, müssen wir zunächst für jede Bedeutung eine Regel lernen.
+Der DL-Learner erstellt eine solche Regel anhand von positiven und negativen Beispielen.
+
+Betrachten wir nun den ersten Fall ("beschäftigen" im Sinne von "sich mit etwas auseinandersetzen").
+Sämtliche Beispiele aus dem deutschen Wortschatz ("Beispiele" und "weitere Beispiele") lassen sich nun wie folgt kategorisieren:
+
+Positive Beispielsätze
+
+Aber wie das mit so Vorbildern ist, man erreicht sie nur selten, das ist mir gleich aufgefallen, als ich mich mit dem männlichen Fußvolk beschäftigt habe.
+Das Einordnen der Lagerhistorie in die Geschichte des Nationalsozialismus fiel den Schüler nicht schwer: Ausführlich hatten sie sich in der neunten und zehnten Klasse mit dem Nazi-Terror beschäftigt.
+In der Ausstellung werden Werke von etwa 50 Künstlern zu sehen sein, die sich seit 1972 mit der RAF-Geschichte, den Tätern und ihren Opfern beschäftigt haben, wie Klaus Biesenbach von den Kunst-Werken mitteilte.
+Und die FPD-nahe Friedrich-Naumann-Stiftung beschäftigt sich mit der Potsdamer Konferenz unter dem Aspekt: Wie viele liberale Ideen fanden sich im Potsdamer Abkommen?
+
+Negative Beispielsätze
+
+Derzeit beschäftigt Nomos 53 Mitarbeiter.
+Auch Arbeitsuchende, die in Arbeitsbeschaffungs- oder Strukturanpassungsmaßnahmen beschäftigt sind oder zuletzt beschäftigt waren, können einen Gutschein beanspruchen.
+Den ersten Tag des Jahres hat man moralisch unangefochten hinter sich gebracht, war mit physischer Entgiftung beschäftigt, nun rufen die alten Geister wieder aus den Ecken: Ein Glas, Mann...!
+Weitere Pannen drohen den Start der Arbeitsmarktreform Hartz IV zu behindern: Wie die Nürnberger Bundesagentur für Arbeit (BA) am Sonnabend einräumte, ist die Behörde intensiv mit der Behebung von massiven Computerproblemen beschäftigt.
+... (18 Sätze insgesamt)
+
+Der DL-Learner akzeptiert als Eingabe aber keine Sätze, sondern strukturierte Information (linked data).
+Für jeden Satz wird also mit Hilfe eines Chunkers eine einfache Struktur erzeugt.
+
+IChunker chunk = new StanfordAdapter();
+StructuredText structuredText = new StructuredText(chunk,sentences);
+
+[insert bild here]
+
+Diese Struktur ist jedoch noch nicht ausreichend, um ein sinnvolles Lernergebnis zu erhalten.
+Die einzige Information, die dem DL-Learner zur Verfügung steht, ist hier die, welche Wörter in welcher Reihenfolge im Satz vorkommen.
+Anhand dieser Information wäre es nur möglich, eine Regel wie "der Satz enthält entweder "mich" oder "sich"" zu schlußfolgern.
+Diese Regel würde allerdings auf unseren Satz fälschlicherweise nicht zutreffen, da in ihm nicht "beschäftigt sich", sondern "beschäftigen uns" vorkommt.
+Daher erweitern wir die Struktur noch um grammatikalische Information:
+
+IAdapter stanfordAdapter = new StanfordAdapter();
+stanfordAdapter.enrich(structuredText);
+
+[insert bild here, struktur mit syntaxbaum]
+
+Der DL-Learner erstellt anhand dieser Strukturen folgende Regel:
+
+Solution: 0
+description:
+(http://nlp2rdf.org/Sentence and http://nlp2rdf.org/hasWord some http://nlp2rdf.org/hasAnnotation some http://nlp2rdf.org/hasTag some http://141.89.100.105/owl/stts.owl#ReflexivePronoun)
+
+Die Regel lautet also "der Satz enthält ein Reflexivpronomen". 
+Unser Beispielsatz "Wir beschäftigen uns mit sonnigen Sandstränden" wird damit auch korrekt erkannt. Diese Definition ist zwar noch nicht völlig korrekt (beachte z.B. "IBM beschäftigt Paul, der sich dort sehr wohlfühlt") ist jedoch schon eine gute Näherung und wir mit weiteren Beispielsätzen sicher noch optimiert.
+
+Wichtig ist noch zu erwähnen, das in diesem Fall allein die Zusatzinformation über die grammatikalische Struktur der Sätze ausreichen würde, um eine gute Regel zu finden.
+Es ist jedoch auch noch eine Ontologie hinzugekommen, welche die Relation dieser Syntaxbausteine untereinander beschreibt.
+Anhand dieser könnte man eine Regel wie "der Satz enthält ein Reflexivpronomen oder ein Personalpronomen oder ein Possessivpronomen..." zu "der Satz enthält ein Pronomen" vereinfachen.
+

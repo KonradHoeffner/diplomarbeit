@@ -1,0 +1,34 @@
+\chapter{Zusammenfassung und Ausblick}\label{zusammenfassung_und_ausblick}
+
+analyse
+- die parameter der disambiguierung sind relativ egal fürs resultat
+-> wohl doch im praktischen einsatz wenig lokale minima, die schwierigkeit besteht also wohl 
+1. in der kandidatengenerierung und 2. in dem ähnlichkeitsmaß nud 3. in praktischen tricks und sprachwissenschaftlichen überlegungen 
+aber die tparameter bei dem simulated annealing scheinen recht egal zu sein
+
+verbesserungen
+%- auch die schwache ähnlichkeit in tabelle \ref{tab:disambiguierung-properties} implementieren
+Aufgrund der sehr großen Klassenanzahl wird bei dem Ähnlichkeitsmaß, das auf der YAGO-Hierarchie basiert, die performantere der beiden in Abschnitt \ref{sec:hierarchien} vorgestellten Methoden verwendet,
+obwohl diese, da es sich bei YAGO um eine Polyhierarchie handelt, nur eine Annäherung liefert.
+Hier ist zu prüfen, ob anstelle der verwendeten Expansion der Abfrage eine andere Methode bei sehr großen Hierarchien bessere Ergebnisse liefert.
+\emph{Virtuoso SPARQL} bietet beispielsweise eine geignete Inferenzerweiterung.
+Wird mit dieser Erweiterung eine Anfrage der Art \texttt{?s rdf:type ?class} gestellt, dann werden alle Tripel der Form \texttt{?s rdf:type ?superclass} als vorhanden angesehen, bei denen \texttt{?superclass} eine direkte oder indirekte Superklasse
+von \texttt{?class} ist. Falls im Superklassengraph Zyklen vorhanden sind, ist das Verhalten undefiniert, führt jedoch nicht zu einer Endlosschleife.\footnotemark{}
+\footnotetext{Siehe \url{http://docs.openlinksw.com/virtuoso/rdfsparqlrule.html}.}
+Weiterhin ist es auch möglich, die beiden Methoden zu kombinieren und für Klassen nahe der Wurzel die Annäherungsmethode und für die Anderen die exakte Methode zu verwenden.
+
+Weitere Verbesserungen sind bei der Ähnlichkeit der Properties in Abschnitt \ref{sec:aehnlichkeitsmass-properties} möglich.
+Anstatt nur Tripel zu prüfen, bei denen die zu vergleichenden Entitäten als Subjekt fungieren, verspricht das Einbeziehen auch der Tripel, in denen die Entitäten als Objekte auftreten, eine Erweiterung der über
+die beiden Entitäten verfügbaren semantischen Informationen und damit eine höhere Qualität des Ähnlichkeitsmaßes.
+Weiterhin können auch indirekte Verbindungen über mehrere Tripel relevant sein, um eine Beziehung der Tripel darzustellen.
+Dies verspricht zwar eine abhängig von der Verbindungstiefe potentiell exponentiell anwachsende Informationsmenge, jedoch auch eine gleichermaßen anwachsende Rechenzeit, wobei die Relevanz einer Verbindung 
+erwartungsgemäß mit ihrer Länge tendentiell abnimmt. Es bleibt also zu prüfen, ob eine solche rekursive Suche von mehrfach indirekten Entitätsbeziehungen die Qualität des Ähnlichkeitsmaßes erhöht,
+und welche Rekursionstiefe und/oder welche Suchmethode (\zb Breitensuche oder Tiefensuche) das beste Ergebnis und den besten Kompromiß aus Laufzeit und Qualität liefert.
+
+
+% -> verbesserung: mit "`null"' und "`0"' rückgabewert auf Double statt double setzen und dann da variieren
+
+- opencyc
+%- genaue tweaks der ganzen parameter (gleichung mit n variablen - komplizierte lösung)
+
+- flexibel, also auch auf andere ontologien anwendbar

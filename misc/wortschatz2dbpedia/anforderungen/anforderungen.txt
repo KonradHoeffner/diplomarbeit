@@ -1,0 +1,268 @@
+﻿Aufgabe
+
+Ziel ist es, ein Mapping zwischen den beiden Webservices DBPedia und dem Deutschen Wortschatz zu erzeugen.
+Dieses Mapping besteht aus einer Menge von Tripeln (DBPedia-Ressource, Typ, Wort), wobei die Resource ein Objekt oder Konzept aus der realen Welt beschreibt, das Wort Jenes aus dem Wortschatz ist, das mit der Resource zusammenhängt und der Typ die Art des Zusammenhangs angibt.
+
+Dabei werden an das Mapping von DBPedia zum Wortschatz und vom Wortschatz zur DBPedia unterschiedliche Anforderungen gestellt.
+
+Warum braucht man sowas?
+
+Das Mapping wurde erst einmal nur mit der Aufgabe erstellt, die Fol Cloud zu erweitern, damit es mehr RDF gibt und das sich mehr verbreitet.
+
+Anforderungen
+Wir fragen uns nun: Welche Arten von Links machen denn überhaupt Sinn?
+
+Im Fall des Verlinken vom Wortschatz zur DBPedia ist die Intuitivste die Folgende:
+Beschreibt die DBPedia-Ressource einer der *Bedeutungen* des Wortes?
+Der Wortschatz enthält rein statistische Informationen über den Sprachgebrauch eines Wortes, sehr nützlich sowohl für einen Besucher der Wortschatzseite als auch für Programme ist eine Verknüpfung eines Wortes mit dem Objekt, dass die Bedeutung des Wortes enthält.
+Der Link würde dem Wort also eine Semantik hinzufügen.
+Dies ist jedoch eine sehr harte Forderung.
+Ein Wort hat jedoch oft mehrere Bedeutungen (man nennt das Wort dann Homonym), je nachdem, in welchem Kontext es vorkommt.
+Hat man also nur ein Wort ohne einen Kontext, so kann man nur von möglichen Bedeutungen sprechen.
+Selbst wenn nur eine Bedeutung bekannt ist, kann es ja durchaus weitere geben. Möglicherweise sind die Anderen entweder nicht in der DBPedia enthalten oder die Verbindung ist unerkannt.
+Wie bekommen wir nun heraus, wann ein eine Ressource r eine Bedeutung des Wortes w ist?
+Die Ressourcen aus dbpedia haben denselben Namen, wie die Wikipediaartikel, aus denen sie extrahiert sind.
+Da der Name des Artikels meist gleich dem Namen des Objektes ist, das er beschreibt, können uns also fast sicher sein, dass eine Verbindung besteht, falls r=w ist.
+Als erstes wurde deshalb ein Prototyp erstellt, der genau dies tut: Er vergleicht jede Ressource r mit jedem Wort w und fügt dann genau die Paare (r,w) hinzu, bei denen r=w gilt.
+Startet man den Prototyp mit einer Liste aller Wörter des englischen Wortschatzes und aller Ressourcen der englischen DBPedia, so findet man man bereits 100231 Links.
+Das entspricht einer Coverage von 8,08% des Wortschatzes und 3,13% der DBPedia.
+Betrachtet man nur Wörter der Länge von mindestens 3, so findet man immer noch 99276 Links mit einer Coverage von 8,01% des Wortschatzes und 3,10% der DBPedia.
+Diese Einschränkung wurde getroffen, da DBPedia-Einträge Konzepte und Objekte beschreiben, und deren Namen fast ausschließlich mehr als zwei Buchstaben lang sind.
+
+Überprüfen wir diese These mit einer Stichprobe von 20 Einträge dieser Links mit einer Länge von ein oder zwei Buchstaben.
+
+************************************************************************************
+konrad@konrad-laptop:~/projekte/java/wortschatz2dbpedia/output$ rlines output.csv 20
+VK	VK	d
+Z@PP	Z
+PJ	PJ	d
+KJ	KJ	d
+FY	FY
+C6	C6	d
+ZR	ZR
+QR	QR	d
+DS	DS
+N1	N1	d
+PH	PH	d
+TA	TA	d
+BB	BB	d
+Zi	Zi	d
+FJ	FJ	d
+N2	N2	d
+V	V
+UI	UI
+U	U
+Dy	Dy
+************************************************************************************
+Weiter untersucht werden muss noch, warum die Ressource "Z@PP" mit dem Wort "Z" gematched wird.
+
+Nun wollen wir versuchen, die Coverage zu erhöhen.
+Dies erreichen wir, indem wir nicht nur exakte Treffer (r=w) verlinken, sondern auch solche, bei denen nur bestimmte, kleine Unterschiede bestehen.
+Eine Möglichkeit dies zu tun, wäre, eine Ähnlichkeitsfunktion f einzuführen, welche für Wortpaare (a,b) eine reelle Zahl zwischen 0 (komplett verschieden) und 1 (exakt gleich) annimmt.
+Nach [Link zu dem Paper mit Jaro Winkler und so] gibt es bereits sehr ausgereifte Verfahren und auch eine freie Javabibliothek namens SecondString, so dass ein Matching anhand solch einer Funktion sehr einfach zu implementieren ist. Egal wie eine solche Funktion jedoch aussieht, es 
+
+Dies erhöht zwar die Coverage, bringt aber das Risiko einer Verringerung der Präzision mit sich. Deshalb werden wir im nächsten Schritt eine Analyse durchführen, welche Arten des Mappings welche Coverage und welche Präzision erreichen, 
+
+Da die Ressourcen der DBPedia immer mit einem Großbuchstaben anfangen, 
+
+Andererseits können auf diese Art und Weise viele höchstwahrscheinlich ungültige Einträge vom Matching ausgeschlossen werden, was die Präzision und Geschwindigkeit erhöht.
+(gefunden mit:
+<cat articles_label_en_compact_urldecoded.csv | cut -f1 | grep "..." -v | wc -l>
+).
+
+Beispiel:
+
+Aufgabe ist es, ein Programm zu implementieren, welches ein Mapping (eine Menge von Verknüpfungen) zwischen dem Projekt Deutscher Wortschatz (sowieso seiner internationalen Version) und der DBPedia generiert.
+Eine solche Verknüpfung verbindet jeweils ein Wort des Wortschatzes mit einer Ressource der DBPedia.
+Das Programm muss einmal pro Jahr von einer Fachkraft ausgeführt werden, um mit den jährlich aktualisierten Wortschatzdaten ein neues Mapping herzustellen.
+Die Anforderungsanalyse ergab dabei Folgendes:
+
+Nichtfunktionale Anforderungen
+
+    * Zuverlässigkeit
+Es werden keine Anforderungen an die Fehlertoleranz gegenüber Benutzereingabefehlern gestellt.
+Eine Fehlermeldung ("Ihre Eingabedatei besitzt ein ungültiges Format") genügt.
+Einzelne Fehleinträge in den Eingabedaten sollen jedoch nicht zum Abbruch des Programmes führen, sondern einfach ignoriert werden.
+
+    * Aussehen und Handhabung
+Es werden keine Anforderungen an das Aussehen und die Handhabung gestellt.
+Eine Bedienung per Kommandozeile mit einer Ausgabe der zu erwarteten Parameter bei Fehleingabe genügt.
+
+    * Benutzbarkeit
+Es werden keine Anforderungen an das Aussehen und die Handhabung gestellt.
+
+* Leistung und Effizienz
+Es werden keine signifikanten Anforderungen an die Laufzeit des Programmes gestellt, Laufzeiten von bis zu mehreren Tagen sind also explizit erlaubt. In solch einem Fall muss aber eine Vorschau implementiert werden.
+
+* Betrieb und Umgebungsbedingungen
+Das Programm ist in Java zu implementieren sollte daher überall laufen, wo eine standardkonforme Java Virtual Machine vorhanden ist.
+Betrieben wird das Programm jedoch am Ende wohl auf einer Windows- oder Linuxplattform, sodass nur diese beiden zu garantieren und zu testen sind.
+
+* Wartbarkeit, Änderbarkeit
+Laut Herrn Boehlke wird im Wortschatzprojekt immer noch ein Programm eingesetzt, welches im Rahmen einer Diplomarbeit von vor über 10 Jahren entstand.
+Dieses wird heute noch genutzt, aufgrund fehlender Analysierbarkeit und Erweiterbarkeit ist es jedoch mittlerweile Anfang einer Kette von Scripts, welche dessen Ausgabe im ursprünglich erforderlichen Format aufbereiten und in das mittlerweile Erforderliche bringen.
+Auch wenn der Autor nicht weiss, ob sein Programm ähnlich lange in Gebrauch sein wird, hofft er doch, dass ihm ein ähnliches Schicksal erspart bleibt.
+Eine ordentliche Umsetzung objektorientierter Prinzipien und Design Patterns wird also vorrausgesetzt.
+Insbesondere die Datenquellen und Vergleichsalgorithmen sollen ohne weitere Kenntnisse der Programmstruktur trivial erweiterbar sein.
+Bestehende Programmroutinen müssen jedoch nur ein Grundmaß an Kommentaren aufweisen, welches erwartete Eingabe, Funktion und Ausgabe jedes Moduls beschreibt.
+Es werden keine signifikanten Anforderungen an die Analysierbarkeit des Programmes gestellt.
+
+* Portierbarkeit und Übertragbarkeit (Anpassbarkeit, Installierbarkeit, Konformität, Austauschbarkeit)
+Es werden keine Anforderungen an die Portierbarkeit gestellt, aufgrund der Implementierung in Java ist diese jedoch ohne weiteren Aufwand gegeben.
+Es reicht eine einfache Readme-Datei, welche den Installationsvorgang erklärt.
+Die Sprache sowohl des Quelltextes, der Benutzerschnittstelle als auch der Dokumentation kann zwischen deutsch und englisch frei gewählt werden.
+
+    * Sicherheitsanforderungen
+Da Teile des Wortschatzes für kommerzielle Zwecke kostenpflichtig sind, dürfen nur die dort frei verfügbaren Daten in frei verfügbaren Distributionen des Programmes enthalten sein.
+Weiterhin dürfen die geschützten Daten auch nicht aus dem Programm generierbar sein, falls es über diese nicht verfügen kann.
+Dieser Fall ist daher möglich, da bestimmte Informationen im Einzelzugriff frei verfügbar, in einer Komplettfassung jedoch kostenpflichtig sind.
+Die Eingabedaten sollen 
+
+* Korrektheit
+Das Programm soll die ausgewählten Matchingroutinen natürlich fehlerfrei ausführen.
+Aufgrund der großen Menge an Eingabedaten in der Größenordnung von mehreren Millionen und der Komplexität des Problems ist jedoch eine gewisse Menge an Fehlverknüpfungen unvermeidlich.
+Außerdem ist es schon eine Herausforderung an sich, eine exakte Definition zu finden, wann eine Verknüpfung korrekt ist [siehe insert verweis here], und diese anhand einer großen Zahl von Verknüpfungen zur  Überprüfung anzuwenden.
+Bestimmte Verfahren besitzen zwar eine gewisse Fehlerquote, können jedoch den Anteil der gefundenen Verknüpfungen (die Coverage [siehe blubb]) wesentlich erhöhen.
+Andere Methoden können zwar einige wenige weitere Verknüpfungen finden oder Fehlerhafte vermeiden, würden jedoch die Performance oder Entwicklungszeit unverhältnismäßig erhöhen,
+denn auch wenn wir kaum Anforderungen an Geschwindigkeit stellen, würde aufgrund der großen Datenmenge ein Algorithmus "vergleiche jedes mit jedem" quadratischer Laufzeit eine Ausführungsdauer von Wochen oder Monaten haben (bei 3 Millionen Wörtern und Ressourcen sowie 1 Million vergleichen pro Sekunde hätte man eine Laufzeit von 3 1/2 Monaten -> nach unten: (3*10^6)^2 = 9*10^12 Vergleiche, bei geschätzten 10^6 Vergleichen pro Sekunden wären das 9*10^6 Sekunden, entspricht ca. 3 1/2 Monaten [link]).
+Es muss also ein Kompromiss zwischen Laufzeit, Präzision, Coverage und Entwicklungszeit gefunden werden.
+Links mit erwarteter hoher bzw. niedrigerer Präzision sind jedoch durch verschiedene Linktypen zu kennzeichnen.
+
+* Flexibilität
+Das Programm soll die Daten so akzeptieren, wie sie auf der Webseite der DBPedia [insert] und des Wortschatzes [insert] herunterladbar sind.
+Falls sich deren Format ändert, soll es auf einfache Art und Weise so erweiterbar sein, dass es dieses verarbeiten kann.
+Die Programmparameter sind aus einer Datei im INI-Format [insert] auszulesen.
+
+* Skalierbarkeit
+Das Programm soll in der Lage sein, mit Datenmengen von mehreren Millionen Wörtern und DBPedia-Ressourcen umzugehen.
+
+*Entwicklungsdauer
+Die Entwicklungsdauer sollte einen Monat nicht wesentlich überschreiten.
+
+Funktionale Anforderungen
+
+Konzentriert nur anforderungen stichpunkte:
+- ein programm was folgendes erstellt:
+- ein mapping vom wortschatz auf die dbpedia
+- das programm soll ca einmal im jahr (frequenz der änderung der daten) von fachkräften (im prinzip kann das immer der gleiche sein) ausgeführt werden, wobei das programm gleich bleibt aber die daten sich ändern
+- sprache: deutsch oder englisch (beim quelltext und der dokumentation auch)
+- anforderungen an die performance:
+- bei
+- laufzeit könnte theoretisch ruhig ein paar tage dauern, kann zur not auch auf einem server sein
+- dann soll aber wenigstens eine vorschau innerhalb von ein paar minuten erstellbar sein
+- größe der daten ist dabei die nötigen informationen über sämtliche benötigte informationen über den wortschatz und die dbpedia der gewünschten sprache
+- es soll also eine readme datei dabei sein, aus der leicht ersichtlich wird, wie man das programm bedient
+- da sich die eingabe auf die zu verarbeitenden daten und ein paar optionen beschränkt ist eine gui oder eine ähnliche ausgeklügelte bedienung nicht nötig
+-> die bedienbarkeit ist aus diesem grund nicht so wichtig
+-> eine kommandozeilenversion reicht
+- dennoch sollte die angabe der datenquellen und der optionen in einer menschenlesbaren konfigurationsdatei (.ini Format) erfolgen
+- das projekt soll bei google code veröffentlich werden, sodass andere in der uni leute darauf zugreifen können oder es danach weiterführen können
+- jedoch sollen dort keine nicht frei verfüglichen daten veröffentlicht werden (bestimmte datensets sind für kommerzielle nutzung kostenpflichtig)
+- bestimmte teile des programmes sollen flexibel und leicht änderbar sein: die datenquellen (vielleicht ändert sich das format oder es kommt eine neue schnittstelle hinzu
+oder man möchte anstatt dateien manuell herunterzuladen das direkt über eine webschnittstelle herunerladen), die art des matchings (andere transformatoren)
+- transformatoren zur laufzeit auswählbar
+- toleranz gegenüber ungültigen eingabedaten
+- nutzen von anderen sprachen als deutsch und englisch ->zurechtkommen mit allen unicode zeichen
+
+- zum mapping:
+- das mapping besteht aus links zwischen wörtern und dbpedia ressourcen (artikeln)
+- ein link ist genau dann korrekt, wenn das konzept, das der artikel beschreibt, mit dem wort benannt werden kann
+d.h. es gibt einen kontext o, sodass die semantik s(w)=k das konzept ist, welches durch die ressource beschrieben wird
+anders formuliert: die ressource beschreibt eine der bedeutungen des wortes
+- jetzt möchte man natürlich zu so viel wie möglich wörtern und so viel wie möglich artikeln so viele links wie möglich haben, das ist dann die coverage
+- andererseits sollen natürlich auch möglichst alle von den links korrekt sein (das ist die präzision)
+- im realen leben muss man natürlich einen kompromiss eingehen, hier wollen wir eher auf coverage gehen
+- denn laut volker böhlke sind die leute es von google & co gewöhnt, dass sie mehrere möglichkeiten haben, und dann selbst den geeignetsten auswählen,
+da ist es dann besser, ein paar unpassende dabei zu haben, als das risiko einzugehen, dass das Gesuchte nicht dabei ist 
+- da es verschiedene anwendungen für so ein mapping gibt (unter anderem die hier unter x beschriebene y methode), soll eine anwendung jedoch auch eine untermenge benutzen können, die eher auf präzision ausgelegt ist
+- hierfür definieren wir dann verschiedene link-typen: den sicheren link und den alternativen link
+- um diese links zu finden wählen wir erstmal alle paare (r,w), bei denen (r=w) is
+- dann erweitern wir das mit kleinen unterschieden, indem wir unwichtige merkmale entfernen
+- dies geschieht, in dem vor dem matching eine funktion t (nennen wir hier stringtransformator) auf beide ausgeführt wird und wir dann auch wörter matchen,
+bei denen t(r)=t(w) ist
+- beispiel: verwenden wir die Funktion t=String.toLowerCase(), dann wird beim matching die groß- und kleinschreibung ignoriert und z.B. das Paar (Cattle,cattle) gefunden
+(in dbpedia )
+- es sind auch transformatoren möglich, die bestimmte worte auschließen (indem sie bestimmte wörter auf das leere wort epsilon abbilden, welches vom mapping ignoriert wird), um bestimmte wortmengen auszuschließen, deren präzision sich als niedrig herausstellt
+- welche funktionen wir jetzt genau benutzen soll mit einer analyse herausgefunden werden, in dem die präzision geschätzt wird die dadurch erreicht wird
+- zu untersuchen sind: 
+- diese transformatorfunktionen sollen auch vom benutzer frei ausgewählt werden, auch die hintereinanderausführung t1(t2(...t_n(w)...) sowie das vereinigen von matches mit verschieden transformatoren soll möglich sein
+- das matching soll auch redirects mit einbeziehen
+redirects sind keine richtigen artikel sondern nur weiterleitungen
+wenn man bei englischen wikipedia z.B. "cow" eingibt, wird man auf den artikel "cattle" weitergeleitet [bild einfügen, bilder sind immer gut] (dbpedia ist ein 1:1 mapping der wikipedia-artikelnamen auf die dbpedia-ressourcennamen)
+- die redirects sollen dabei für den matchingvorgang wie normale ressourcen betrachtet werden, danach aber auf das ziel des redirects geändert werden
+- beispiel: das wordschatzwort "cow" wird untersucht, eine passende ressource wird nicht gefunden, jedoch existiert der redirect cow->cattle,
+cow wird also erst auf cow gemappt, hinterher jedoch werden die redirects aufgelöst und das paar (cow,cattle)
+- mehrwortbegriffe werden auch mit einbezogen, ein mögliches Mapping wäre (Franz Müntefering,Franz Müntefering)
+- mappings wie ((der) SPD Vorsitzende Franz Müntefering,Franz Müntefering) sind zwar richtig, müssen aber aufgrund des nicht angemessenen technischen aufwandes nicht berücksichtigt werden
+warum ist das zu schwierig? nehmen wir an, wir haben den Mehrwortbegriff "Gartenvorstand Peter Müller" und den dbpedia artikel namens "Peter Müller", ob das mapping jetzt korrekt ist hängt nun davon ab, ob der artikel tatsächlich einen peter müller beschreibt, der auch gartenvorstand ist, dies lässt sich alleine aus dem artikelnamen ohne zusatzwissen jedoch nicht herausfinden.
+eine möglichkeit wäre zwar, den artikel nach dem mehrwort "Gartenvorstand Peter Müller" zu durchsuchen, aber dann würde man immer noch sätze wie  "es handelt sich in diesem Artikel nicht um den Gartenvorstand Peter Müller" erkennen und das vorkommen derartiger matches wird dem aufwand nicht entsprechend geschätzt
+- 
+Zum Mapping ausgeschrieben:
+
+Aufgabe des Programmes ist die Erstellung eines Mappings zwischen DBPedia und dem Internationalen Wortschatzprojekt in einer bestimmten Sprache.
+Das Mapping besteht aus Links zwischen Wörtern des Wortschatzprojektes und Ressourcen der DBpedia.
+Dabei sind zunächst einmal nur die Englischen und Deutschen Versionen zu verarbeiten, eine einfache Erweiterung auf andere Sprachen soll jedoch garantiert sein.
+Die Wörter entstammen dem Corpus des Wortschatprojektes und sind daher sowohl Einzelne ("Brot") , als auch Mehrwörter ("SPD Generalvorsitzender Frank Walter Steinmeyer"), wie sie im normalen schriftlichen Gebrauch ausgewählter Quellen (Zeitungen und zufällig ausgewählter Webseiten) enthalten sind.
+Die Ressource eines bestimmten Namens ist eine RDF-Entität, welche automatisch extrahierte, strukturierte maschinenverarbeitbare Informationen aus dem gleichnamigen Wikipediaartikel enthält und damit ein Objekt oder allgemeiner ein Konzept der realen Welt repräsentiert.
+Wir definieren einen Link nun genau dann korrekt, wenn das Konzept, das die Ressource beschreibt, mit dem Wort benannt werden kann.
+Das Konzept ist dann also eine der möglichen Bedeutungen des Wortes.
+Bei dieser Definition wird schon klar, dass wir einen Kompromiss zwischen Coverage und Präzision eingehen müssen.
+
+Eine Anwendung wäre das Einblenden der zu einem Wort zugeordneten Ressourcen mithilfe eines Links auf der Wortschatzseite zu diesem Wort, sodass sich ein Nutzer des Wortschatzes über die Bedeutung eines Wortes informieren kann.
+Laut Herrn Volker Böhlke sind es die Nutzer einschlägier Suchmaschinen gewöhnt, dass sie mehrere Möglichkeiten haben  um dann selbst den für sie geeignetsten Treffer auszuwählen.
+In diesem Fall ist es daher besser, einen Anteil unpassender Verweise dabei zu haben, als das Risiko einzugehen, dass das Gesuchte nicht dabei ist 
+Beim Einsatz in einer Kette von Verarbeitungsschritten wie hier [insert] beschrieben im Rahmen einer Wortsinndisambiguierung, können falsche Matches jedoch unerwünschte Fehlausgaben des Programmes liefern.
+Aus diesen Gründen soll es zwei Typen von Links geben: diejenigen, bei denen eine hohe - (der sichere Link) und jene, bei denen eine etwas niedrigere Präzision erwartet wird (der alternative Link).
+Als Grundlage kann von einem sicheren Link (r,w) ausgegangen werden, wenn das Wort w mit dem Namen r der Ressource übereinstimmt, r=w. Dies sollte sich in linearer - und damit akzeptabler - Laufzeit implementieren lassen [insert link zu laufzeitbla].
+Der Namen der Ressource ist ja auch der Name eines Artikels über das beschriebene Konzept, und damit ist r und damit auch w eine Benennung des Konzeptes.
+Um die Coverage zu erhöhen, ist nun der nächste Schritt das Verknüpfen von Wörtern mit Ressourcen, deren Name nur noch ähnlich aber nichtmehr exakt gleich ist.
+Eine Möglichkeit dies zu tun, wäre, eine Ähnlichkeitsfunktion f einzuführen, welches für ein Wortpaare (r,w) eine reelle Zahl zwischen 0 (komplett verschieden) und 1 (exakt gleich) annimmt.
+Für jedes Wort w und jeden Ressourcennamen r solch eine Ähnlichkeitsfunktion f(r,w) auszuwerten, würde jedoch zu einer aufgrund der großen Datenmenge nicht akzeptierbare quadratische Laufzeit führen.
+
+Aus diesem Grund soll das erweiterte Matching über die Entfernung für die Wortdifferenzierung unwichtiger Merkmale erfolgen.
+Dies geschieht, in dem vor dem Matching eine Funktion t (wir nennen sie einen Stringtransformator) auf r und w ausgeführt wir dem Matching alle Paare (t(r),t(w)) hinzufügen.
+Welche dieser Stringtransformatoren nur das beste Ergebnis bringen, muss mit einer manuellen Analyse [insert link zur analyse] einer ausreichend großen Stichprobe des Matchings des Prototyps festgestellt werden, auf welche ein Optimierung der verwendeten Methode erfolgt.
+
+Ein Beispiel
+Verwenden wir die Javafunktion t=String.toLowerCase(), dann wird beim Matching die Groß- und Kleinschreibung ignoriert und z.B. das Paar (Cattle,cattle) gefunden.
+
+Es sind auch Transformatoren möglich, die bestimmte Worte auschließen, um bestimmte Wortmengen auszuschließen, deren Präzision sich als niedrig herausstellt
+Dies soll möglich sein, indem sie bestimmte Wörter auf das leere Wort "" (bzw. <insert epsilonzeichen hier>epsilon) abbilden, welches von der weiteren Verarbeitung dann ausgenommen wird.
+Diese Transformatorfunktionen sollen auch vom Benutzer frei ausgewählt werden, auch die Hintereinanderausführung t1(t2(...t_n(w)...) sowie das Vereinigen von Matches mit verschieden Transformatoren soll möglich sein.
+
+Redirects
+Das Matching soll auch Wikipedia - Redirects mit einbeziehen.
+Redirects sind keine richtigen Artikel sondern nur Weiterleitungen.
+Wenn man beim englischen Wikipedia z.B. "cow" eingibt, wird man auf den Artikel "cattle" weitergeleitet [bild einfügen, bilder sind immer gut].
+Dies wird auch bei der Extraktion des Artikels zur DBPedia-Ressource vermerkt.
+Diese Redirects sollen dabei für den Matchingvorgang wie normale Ressourcen betrachtet werden, danach aber auf das Ziel des Redirects geändert werden.
+
+Ein Beispiel
+Das wordschatzwort "cow" wird untersucht, eine passende Ressource wird nicht gefunden, jedoch existiert der redirect cow->cattle,
+cow wird also erst auf cow gemappt, hinterher jedoch werden die Redirects aufgelöst und das Paar zu (cow,cattle) geändert.
+
+Mehrwortbegriffe
+Mehrwortbegriffe werden auch mit Einbezogen, ein mögliches Mapping wäre (Franz Müntefering,Franz Müntefering).
+Das Matching von Mehrwortbegriffen, die in anderen enthalten sind, soll nicht vorgenommen werden.
+Mappings wie ((der) SPD Vorsitzende Franz Müntefering,Franz Müntefering) sind zwar richtig, müssen aber aufgrund des nicht angemessenen technischen Aufwandes nicht berücksichtigt werden.
+Nehmen wir an, wir vergleichen den Mehrwortbegriff "Gartenvorstand Peter Müller" und eine Ressource namens "Peter Müller". Ob dieses Paar in unserem Sinne korrekt ist hängt nun davon ab, ob der Artikel tatsächlich einen Peter Müller beschreibt, der auch Gartenvorstand ist, dies lässt sich alleine aus dem Artikelnamen ohne Zusatzwissen jedoch nicht herausfinden.
+Eine möglichkeit wäre zwar, den Artikel nach dem Mehrwort "Gartenvorstand Peter Müller" zu durchsuchen, aber dann würde man immer noch sätze wie "es handelt sich in diesem Artikel nicht um den Gartenvorstand Peter Müller" erkennen. Das Vorkommen derartiger Matches wird dem Aufwand nicht entsprechend geschätzt, trotzdem soll die Möglichkeit, das Programm später auf Derartiges zu erweitern gegeben sein.
+
+    * Zuverlässigkeit (Systemreife, Wiederherstellbarkeit, Fehlertoleranz)
+0
+    * Aussehen und Handhabung (Look and Feel)
+0
+Bedienung per Kommandozeile
+    * Benutzbarkeit (Verständlichkeit, Erlernbarkeit, Bedienbarkeit)
+- 
+    * Leistung und Effizienz (Antwortzeiten, Ressourcenbedarf, Wirtschaftlichkeit)
+    * Betrieb und Umgebungsbedingungen
+    * Wartbarkeit, Änderbarkeit (Analysierbarkeit, Stabilität, Prüfbarkeit, Erweiterbarkeit)
+    * Portierbarkeit und Übertragbarkeit (Anpassbarkeit, Installierbarkeit, Konformität, Austauschbarkeit)
+
+    * Sicherheitsanforderungen (Vertraulichkeit, Informationssicherheit, Datenintegrität, Verfügbarkeit)
+
+    * Korrektheit (Ergebnisse fehlerfrei)
+    * Flexibilität (Unterstützung von Standards)
+    * Skalierbarkeit (Änderungen des Problemumfangs bewältigen)
+

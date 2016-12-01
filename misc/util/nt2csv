@@ -1,0 +1,26 @@
+#!/bin/bash
+#converts n-tripel files of the format "<http://.../x> <http://.../y> <http://.../z>" to "x	z" (with a tabulator in the middle)
+
+
+#Example input line (input lines contain exactly 2 spaces each, between subject and property and between property and object respectively):
+#<http://dbpedia.org/resource/Alien> <http://dbpedia.org/property/disambiguates> <http://dbpedia.org/resource/Alien_%28law%29> .
+#Example output line (with a tabulator in the middle):
+#Alien	Alien_(law)
+#(alternativly the following would also be okay be was not chosen because of space optimisation)
+#http://dbpedia.org/resource/Alien	http://dbpedia.org/resource/Alien_(law)
+
+#What we know:
+# if we call sed without the "g" at the end it replaces only the first occurrence in each line (e.g. 'echo blabla | sed "s|bla|x|"' gives "xbla")
+
+# Plan:
+# what we have:
+# <http://dbpedia.org/resource/Alien> <http://www.w3.org/2000/01/rdf-schema#label> "blubb blubb"@en .
+# first thing: throw away the property
+# <http://dbpedia.org/resource/Alien> "blubb blubb"@en .
+
+
+# throw away the property   			remove ">" and prefixes   replace the one space with a tabulator
+cut -f2 --complement -d " " --only-delimited | sed --regexp-extended "s#> \"|> #	#" | sed --regexp-extended "s#<http://([^/ >	]*/)*##g" | sed --regexp-extended "s#\"(@en)* .|> .\$##g"
+
+# old  (this didnt work with literals containing spaces):
+# cut --delimiter=" " -f1,3 --only-delimited | sed --regexp-extended "s#<http://([^/ ]*/)*|>##g" | sed "s| |       |g"

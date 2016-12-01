@@ -1,0 +1,202 @@
+"DBPedia Ressource (bei anderer Sprache label auswerten)"	"Wortschatz"	"Korrektheit"	"Anmerkung"	"unsicher"
+"PCL"	"PCL"	1	"Jeweils mehrere bedeutungen, printer command language war bei beiden vorhanden"	
+"Baird"	"Baird"	1	"Disambiguierter familienname, wurde im wortschatz auch so benutzt"	
+"Th%C3%A9odore"	"Theodore"	1	"Accent transformation ist ok"	
+"Impossible"	"`Impossible"	0	"artefakt im wortschatz"	
+"Cat"	"`cat"	0	"artefakt im wortschatz"	
+"Perversity"	"perversity"	0	"math. Fachgebgriff in dbpedia, normalsprachlicher begriff im wortschatz"	
+"Braniff"	"Braniff"	0	"fehleintrag in dbpedia (fehler bei bearbeiten der disambiguierung)"	
+"Museum"	"museum"	1		
+"Times-Journal"	"Times-Journal"	1		
+"Oviedo"	"Oviedo"	1		
+"Refugium"	"refugium"	0	"steht im wortschatz garnicht mehr drin"	
+"Wachtel"	"Wachtel"	1	"als nachname"	
+"Mandolin"	"mandolin"	1	"das instrument"	
+"D.b.s."	"DBs"	0	"Punkrockband – baseballteam"	
+"Oyo"	"Oyo"	1	"bundesstaat in nigeria"	
+"Abundant"	"Abundant"	0	"dbpedia: redirect auf abundance (in hülle und fülle), wortschatz: abundant wäre richtig, denn hier großgeschrieben wird eine kirchengemeinde gemeint "	
+"Elkhorn"	"elkhorn"	0	"fehldisambiguierung in dbpedia"	
+"Wary%C5%9B"	"WARY"	0		
+"Moorings"	"moorings"	0	"redirect"	1
+"Dotty"	"dotty"	0	"dbpedia: fantasybuch, wortschatz: adjektiv"	
+"Romanian"	"Romanian"	0	"fehldisambiguierung in dbpedia"	
+"Creativity"	"creativity"	0	"fehldisambiguierung in dbpedia"	
+"Sentences"	"Sentences"	0	"dbpedia: bestimmte werke. Wortschatz: allgemeinsprachliche bedeutung"	
+"Jih%C3%A2d"	"`jihad"	0	"artefakt im wortschatz"	
+"Kars"	"Kars"	1	"stadt"	
+"Resend"	"re-send"	0	"redirect"	
+"Margarine"	"Margarine"	1	"allerdings sehr niedrige frequenz, da erstens fremdsprachiges wort (deutsch) und zweitens großgeschrieben (nur satzanfang)"	
+"Windshield"	"Windshield"	1	"großgeschriebene substantive im englischen: optimierung?"	
+"Panoramas"	"Panoramas"	0	"redirect auf panorama"	
+"Firkin"	"Firkin"	0	"fehldisambiguierung in dbpedia"	
+"Rosa"	"rosa"	0	"gibt’s case sensitiv garnicht im wortschatz und auhc nur 11 mal im falschen kontext sonst (nämlich als „sub rosa“)"	
+"Zermatt"	"ZERMATT"	1	"aber niedrige frequenz"	
+"Chavannes"	"Chavannes"	0	"Frequenz 11, deshalb keine richtige aussage möglich aber wahrscheinlich ist die stadt nicht gemeint, wortschatz direktsuche funktioniert nicht"	1
+"Ass"	"ass"	0	"dbpedia: disambiguiert fachbegriffe (z.b. ass beim kartenspielen) wortschatz: im sinne von hintern"	
+"%C3%89ire"	"Eire"	1		
+"Rosalie"	"Rosalie"	0	"fehldisambiguierung in dbpedia"	
+"Eye"	"Eye"	0	"fehldisambiguierung in dbpedia"	
+"Gipton"	"Gipton"	1	"frequenz von 1 aber trotzdem richtig"	
+"Hillside"	"hillside"	0	"fehldisambiguierung in dbpedia"	
+"SWAT"	"swat"	0		
+"Incentive"	"INCENTIVE"	1		
+"Tonga"	"Tonga"	0	"fehldisambiguierung in dbpedia"	
+"Payne"	"Payne"	1	"nachname"	
+"Suppressor"	"suppressor"	0	"dbpedia: schalldämpfer, wortschatz: immunsuppressor(?)"	
+"Basic"	"BASIC"	1	"disambiguation, die programmiersprache BASIC ist aber auch dabei (ganz genau wäre eigentlich ein link auf die programmiersprache)"	
+"Association"	"association"	1		
+"F%C3%BCrst"	"Furst"	0	"dbpedia: deutsche Adelsklasse. Wortschatz: nachname"	
+"SFC"	"SFC"	0	"dbpedia: sequential functional chart, begriff aus speicherprogrammierung oder shop floor communication, shop..., wortschatz: andere abkürzungen"	
+"So-called"	"socalled"	0	"redirect"	
+"Lambada"	"Lambada"	1	"in einem der wortschatzbeispiele bei „more examples“ taucht es im Sinne vom brailianischen Paartanz wie in der dbpedia auf"	
+"Mercurio"	"Mercurio"	1	"el mercurio: zeitung"	
+"PLE"	"P&LE"	0	"fehldisambiguierung in dbpedia (aber ohne „disambiguation“ in der ressource)"	
+"Teriyaki"	"teriyaki"	1		
+"Deluges"	"Deluges"	0	"redirect"	
+"Lakin"	"Lakin"	1	"nachname"	
+"Blois"	"Blois"	1	"stadt in frankreich"	
+"Roarke"	"Roarke"	0	"nachname, aber unterschiedliche personen"	
+"Orangemen"	"Orangemen"	0	"fehldisambiguierung in dbpedia (aber ohne „disambiguation“ in der ressource)"	" "
+"Classification"	"Classification"	0	"dpedia fachbegriff"	
+"Snakebite"	"snakebite"	0	"fehldisambiguierung in dbpedia"	
+"Nomi"	"Nomi"	0		
+"Mafia"	"mafia"	1		
+"Closer"	"closer"	0	"fachbegriff vs adjektiv"	
+"M%C3%A2r%C5%9Fa"	"Mara"	0	"sonderzeichen falsch übersetzt"	
+"Amelia"	"Amelia"	1	"frauenname"	
+"ACL"	"ACL"	0	"fehldisambiguierung in dbpedia"	
+"Faces"	"faces"	0	"eigennamen vs verb"	
+"Kean"	"Kean"	1		
+"Tobermory"	"Tobermory"	1	"eine der disambiguierungen entspricht dem wortschatz: eine stadt aus kanada"	
+"Pucker"	"pucker"	0	"fehldisambiguierung in dbpedia"	
+"Quickly"	"quickly"	0	"Eigenname vs adverb "	
+"Australopithecus"	"Australopithecus"	1		
+"Tan-tan"	"Tan-Tan"	0	"Trommel vs Stadt"	
+"Century"	"century"	1		
+"MONY"	"MONY"	1		
+"Dec"	"Dec"	1		
+"Subcontractor"	"sub-contractor"	1		
+"Evacuation"	"Evacuation"	0	"fehldisambiguierung in dbpedia"	
+"Granite"	"Granite"	1	"stadt in den usa"	
+"Block"	"BLOCK"	0	"fehldisambiguierung in dbpedia"	
+"Tricorne"	"Tricorne"	1		
+"Fifty-Six"	"Fifty-six"	0	"redirect"	
+"Gane"	"gane"	0	"dbpedia: fachbegriff"	
+"Chadwell"	"Chadwell"	0	"dbpedia: städte. Wortschatz: name"	
+"Shrinking"	"SHRINKING"	0	"dbpedia: fachbegriff"	
+"Hungarian"	"HUNGARIAN"	0	"fehldisambiguierung in dbpedia"	
+"Caloric"	"Caloric"	0		
+"Ziggy"	"Ziggy"	1		
+"Straitjacket"	"strait-jacket"	0	"fehldisambiguierung in dbpedia"	
+"Dartington"	"Dartington"	1		
+"Polaroid"	"polaroid"	1		
+"Clark"	"Clark"	0	"fehldisambiguierung in dbpedia"	
+"Guilty"	"guilty"	0	"fehldisambiguierung in dbpedia"	
+"Giorgos"	"Giorgos"	1	"griechischer männlicher vorname"	
+"Illustrious"	"illustrious"	1	"eine der disambiguierungen entspricht dem wortschatz: illustrousness, bedeutet dignity (sowas wie menschenwürde)"	
+"Sluiced"	"sluiced"	0	"redirect"	
+"Mediterranean"	"mediterranean"	0	"fehldisambiguierung in dbpedia"	
+"Shannon"	"SHANNON"	0	"fehldisambiguierung in dbpedia"	
+"Com%C3%A9die-francaise"	"Comedie-Francaise"	1		
+"Andrew"	"ANDREW"	1		
+"Marchais"	"Marchais"	0	"fehldisambiguierung in dbpedia"	
+"Eastbourne"	"Eastbourne"	0	"fehldisambiguierung in dbpedia"	
+"Pit"	"Pit"	0	"fehldisambiguierung in dbpedia"	
+"Arte"	"Arte"	0	"dbpedia: fernsehsender. Wortschatz: adjektiv in der musik"	
+"Vidovic"	"Vidovic"	0	"redirect"	
+"Lipson"	"Lipson"	0	"dbpedia: stadtteil von plymouth, england. Wortschatz: nachname"	
+"TCBY"	"TCBY"	1		
+"Butternut"	"Butternut"	1		
+"Ugh"	"ugh"	1		
+"Dual"	"dual"	1		
+"WAS"	"`Was"	0	"artefakt im wortschatz"	
+"Swithland"	"Swithland"	1		
+"Leash"	"LEASH"	0		
+"MK801"	"MK-801"	0	"im wortschatz nichtmehr vorhanden"	
+"Rubio"	"Rubio"	1		
+"Welcome"	"`Welcome"	0	"artefakt im wortschatz"	
+"D.I.R.T."	"dirt"	0	"dbpedia: fachbegriff"	
+"FIGS"	"figs"	0	"dbpedia: fachbegriff"	
+"Sunkist"	"Sunkist"	1		
+"Vigil"	"Vigil"	1		
+"But%C5%8D"	"BUt"	0		
+"GONG"	"Gong"	0		
+"Castrillon"	"Castrillon"	0	"fehldisambiguierung in dbpedia"	
+"Shake"	"`Shake"	0	"artefakt im wortschatz"	
+"Thr"	"thr"	1		
+"Huck"	"Huck"	1		
+"Afternoons"	"Afternoons"	0	"dbpedia: indi rock band"	
+"Grandsons"	"grandsons"	0	"redirect"	
+"Modena"	"Modena"	0	"fehldisambiguierung in dbpedia"	
+"Power"	"power"	0	"fehldisambiguierung in dbpedia"	
+"Woodlock"	"Woodlock"	1		
+"Poland"	"POLAND"	0		
+"Gunderson"	"Gunderson"	1		
+"Parche"	"Parche"	1		
+"Terrill"	"Terrill"	1		
+"Hits%2B"	"HITS"	0	"Hits+ ist ein Musikalbum"	
+"Raspberry"	"Raspberry"	0	"dbpedia: frucht. Wortschatz: nachname"	
+"%C4%B0nc%C9%99"	"INC"	0	"wegen sonderzeichen"	
+"Dhankuta"	"Dhankuta"	1		
+"Rebel"	"Rebel"	1		
+"Cauldron"	"cauldron"	0	"fehldisambiguierung in dbpedia"	
+"Ninjas"	"ninjas"	1		
+"Ohm"	"Ohm"	1		
+"December"	"December"	1		
+"Ballroom"	"Ballroom"	1		
+"Judgment"	"judgment"	1		
+"Folk"	"folk"	0	"fehldisambiguierung in dbpedia"	
+"MMM"	"MMM"	1		
+"Grasshopper"	"grasshopper"	0	"fehldisambiguierung in dbpedia"	
+"Esperanto"	"Esperanto"	0	"fehldisambiguierung in dbpedia"	
+"Tayside"	"Tayside"	1		
+"PENG"	"Peng"	0		
+"Carswell"	"Carswell"	1		
+"Feijoada"	"Feijoada"	1		
+"BIC"	"Bic"	0		
+"Vegetable"	"Vegetable"	0	"fehldisambiguierung in dbpedia"	
+"Fujikawa"	"Fujikawa"	1		
+"Ugo"	"Ugo"	1		
+"Twilight"	"twilight"	1		
+"Iranians"	"Iranians"	1		
+"Cascades"	"Cascades"	0	"fehldisambiguierung in dbpedia"	
+"AirPort"	"Airport"	0	"AirPort ist eine Apple-Schnittstelle, Case ist ja auch anders"	
+"Grammer"	"Grammer"	0	"fehldisambiguierung in dbpedia (aber ohne „disambiguation“ in der ressource)"	
+"Hypnos"	"Hypnos"	0	"fehldisambiguierung in dbpedia"	
+"Crushed"	"crushed"	0	"dbpedia: fachbegriff"	
+"Hole"	"Hole"	1		
+"PAMS"	"pams"	0	"fehldisambiguierung in dbpedia"	
+"K.I.N.G."	"king"	0		
+"Cir%C3%B2"	"Ciro"	0		
+"Languidly"	"languidly"	0	"redirect"	
+"Incorrect"	"incorrect"	1		
+"Arbat"	"Arbat"	0	"fehldisambiguierung in dbpedia"	
+"V%C3%ADtkovice"	"Vitkovice"	1		
+"ESCOM"	"Escom"	0		
+"Evart"	"Evart"	0		
+"Sand"	"sand"	0	"fehldisambiguierung in dbpedia"	
+"Okay"	"okay"	0	"fehldisambiguierung in dbpedia"	
+"Triangle"	"triangle"	0	"fehldisambiguierung in dbpedia"	
+"Reserve"	"REserve"	1		
+"Repellent"	"Repellent"	1		
+"Inclination"	"inclination"	1		
+"Hislop"	"Hislop"	1		
+"Justification"	"justification"	1		
+"KELP"	"Kelp"	0		
+"Surfers"	"Surfers"	0	"redirect"	
+"Miyajima"	"Miyajima"	0	"dbpedia: stadt. Wortschatz: name"	
+"Spink"	"Spink"	1		
+"Rendezvous"	"rendezvous"	0	"fehldisambiguierung in dbpedia"	
+"%C4%AAraj"	"Raj"	0		
+"Addiction"	"`addiction"	0	"artefakt im wortschatz"	
+"Betty"	"betty"	0	"fehldisambiguierung in dbpedia"	
+"Brake"	"BRAKE"	0		
+"Woodpecker"	"Woodpecker"	0	"fehldisambiguierung in dbpedia"	
+"Vozhd"	"Vozhd"	1		
+"M%C3%A4dchen"	"Madchen"	0		
+"Ingeborg"	"Ingeborg"	1		
+"Germans"	"GERMANS"	1		
+"SEITA"	"SEITA"	1		
+"Dogooders"	"do-gooders"	0	"redirect"	
+"Turbine"	"turbine"	1		
+		85		

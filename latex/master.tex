@@ -1,0 +1,137 @@
+\RequirePackage{cmap}%kopieren aus dem pdf
+\documentclass[a4paper,12pt]{report}
+\usepackage[paper=a4paper,top=30mm,bottom=30mm]{geometry}%,twoside
+
+%\usepackage{a4wide}
+%\usepackage{ngerman}
+\usepackage[ngerman]{babel}
+\selectlanguage{ngerman}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}% die beidne sachen fürs aus dem pdf kopieren
+\usepackage{lmodern}% schaden aber auch so nix glaub ich (lmodern provoziert eine vektorschrift imho)
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\usepackage{float} %
+%\usepackage{yfonts}
+\usepackage{xspace}
+\usepackage{fancybox}
+\usepackage{graphicx}
+\usepackage{floatflt}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{boxedminipage}
+\usepackage{float}
+\usepackage{sepnum}
+\usepackage{placeins}
+\usepackage{rotating}
+\usepackage{threeparttable}
+\usepackage[multidot]{grffile}
+\usepackage{epigraph}
+\usepackage[normalem]{ulem}
+\usepackage[comma,authoryear]{natbib}
+\usepackage[pdfborder={0 0 0}]{hyperref} %hyperref funktioniert leider nicht mit dvips, mit pdflatex aber schon
+\usepackage{hypernat}%damit hyperref und natbib besser harmonieren (funktioniert aber immer noch nicht :-( )
+%\hypersetup{colorlinks=false}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{dcolumn}
+\captionsetup{justification=justified}
+\usepackage{booktabs}
+%\usepackage{color}
+\usepackage{subfig}
+\usepackage{xyling}%Bäume, wichtig: wenn mit pdflatex benutzt, muss in der datei xyling.sty die Zeile "`\RequirePackage[color,all,dvips]{xy}"' zu "`\RequirePackage[color,all]{xy}"` geändert werden
+%\usepackage[all]{hypcap} %damit auf den anfang eines bildes verwiesen wird (macht angeblich sonst probleme, siehe http://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing)
+%\usepackage{lmodern}%bringt nix %Standardschriftart, damit hoffentlich das aus dem pdf kopieren von umlauten funktioniert
+%\usepackage{MnSymbol}
+
+\begin{document}
+\allowdisplaybreaks%Mathe darf auch umbrechen
+\newcommand{\todo}[1]{\begin{Huge}\emph{[ToDo: #1]}\end{Huge}}
+%\newcommand{\f}[0]{\textnormal{f}}
+\newcommand{\datum}[3]{#3.\,#2.\,#1}%Tag Monat Jahr gesetzt nach DIN ... #1 - year #2 - month #3 - day
+\newcommand{\func}[1]{\textnormal{#1}}
+\newcommand{\code}[1]{\textnormal{#1}}
+\newcommand{\stichprobentabelleninneres}[1]{\texttt{#1}}
+\newenvironment{bsp}{\subparagraph{Beispiel}}{~\\}
+\newenvironment{bem}{\subparagraph{Anmerkung}}{~\\}
+\newenvironment{rahmen}{\begin{boxedminipage}{\linewidth}}{\end{boxedminipage}}
+\newenvironment{webseitenausschnitt}{\paragraph{}\begin{rahmen}}{\end{rahmen}\paragraph{}}
+\newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
+\newcommand{\setN}{\mathbb{N}}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\pow}[1]{2^#1}
+\newcommand{\average}{\varnothing}
+\newcommand{\property}[1]{\url{#1}}
+\newcommand{\article}[1]{\url{#1}}
+\newcommand{\prefix}[1]{\url{#1}}
+\newcommand{\definition}[1]{\textit{#1}}
+\newcommand{\val}[1]{\sepnum{,}{\,}{}{#1}}
+\newcommand{\valunit}[2]{\val{#1}\,#2}
+\newcommand{\valrange}[2]{\val{#1} -- \val{#2}}
+\newcommand{\valunitrange}[3]{\val{#1} -- \valunit{#2}{#3}}
+% Functions
+%\newcommand{\T}{\textnormal{T}}
+\newcommand{\s}{\textnormal{s}}
+\newcommand{\f}{\textnormal{f}}
+\newcommand{\g}{\textnormal{g}}
+\newcommand{\h}{\textnormal{h}}
+%Theorems
+\theoremstyle{remark}
+\newtheorem{rem}{Bemerkung}
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+%Abbreviations
+\newcommand{\zb}{\mbox{z.\,B.}\xspace}
+%\newcommand{\figref}[1]{Abbildung \ref{fig:#1}}
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup} 
+\lstset{language=Java}
+\lstset{flexiblecolumns=true}
+
+%\topmargin-5.4mm %default 25.4mm
+%\topmargin-20mm
+\tableofcontents
+
+\include{einleitung}
+\include{grundlagen}
+%\include{yago}
+\include{state_of_the_art}
+\include{nlp2rdf}
+\include{wortschatz2dbpedia}
+\include{disambiguierung}
+\include{evaluation}
+\include{relatedwork}
+
+\include{zusammenfassung_und_ausblick}
+\newpage
+\include{appendix}
+\paragraph{Erklärung}Ich versichere, daß ich die vorliegende Arbeit selbständig und nur unter
+Verwendung der angegebenen Quellen und Hilfsmittel angefertigt habe.
+Leipzig, den ...                         Unterschrift
+
+%\paragraph{Danksagung} -> dank an sebastian, claus, robert, padam, jan, volker boehlke vom wortschatz, joe, ... \citet{claus_diplomarbeit}
+
+\chapter{Todo}
+\begin{itemize}
+  \item transitivität der differenz überlegen was damit machen
+  \item hinschreiben wieviele classen und wieviele lines of code
+%System Size (lines of code) 	Schedule (calendar months) 	Effort (man-months) 	Schedule (calendar months) 	Effort (man-months) 	Schedule (calendar months) 	Effort (man-months)
+% find . | grep java | xargs cat | grep "//" -v | wc -l 17436
+%http://users.polytech.unice.fr/~hugues/GL/Projet/estimation.html
+%30,000 	9 	110 	5.5 	22 	7 	37
+
+%Nominal Schedule:Average team, average project, a normal project!
+%source: derived from data in "Software Engineering Economics"(Boehm 1981),"An Empirical Validation of Software Cost Estimation Models"(Kemerer 1987),"Applied software Measurement"(Jones 1991),"Measures for Excellence"(Putman and Myers 1992),and "Assessment and Control of Software risks"(Jones 1994). 
+%30,000 	16 	185 	9 	37 	11 	59
+\end{itemize}
+
+%\bibliographystyle{plain}
+\bibliographystyle{natdin}%apalike abbrvnat plainnat natdin (nicht dinat)
+\bibliography{diplomarbeit}
+\end{document}

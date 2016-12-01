@@ -1,0 +1,6 @@
+AKSW	Agile_Knowledge_Engineering_and_Semantic_Web
+BIS	Betriebliche_Informationssysteme
+OWL	Web_Ontology_Language
+STTS	Stuttgard_Tübingen_Tagset
+RDF	Resource_Description_Framework
+Pfannkuchen	Berliner_Pfannkuchen

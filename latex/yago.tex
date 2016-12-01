@@ -1,0 +1,80 @@
+\section{Modul \textit{Domänenidentifizierung}}
+\begin{center}
+\begin{tabular}{l|l}
+\multicolumn{2}{c}{Modulabhängigkeiten}\\
+Vorraussetzung& Empfohlen\\
+\hline
+\textit{Wortschatz2DBpedia} & \textit{Disambiguation}
+\end{tabular}
+
+\end{center}
+
+\subsection{Problemstellung}
+Eine wichtiges Merkmal höherer Ordnung\todo{klingt das ok?} eines Textes, das zu seiner Klassifizierung beitragen kann, ist die Domäne, also der Gegenstand oder auch Fachgebiet des Textes.
+Um zu einer große Menge von Texten eine passende Domäne zur Verfügung zu haben und um aus den im Text vorhandenen Konzepten auf einen gemeinsamen Gegenstand zu schließen, wird eine
+umfangreiche taxonomische (Superklassen-) Hierarchie benötigt.
+\todo{den ganzen satz vielleicht zum wortschatz2dbpedia-modul schieben} Durch das NLP2RDF-Modul \textit{Wortschatz2DBpedia} werden zu den im Text vorkommenden, explizit angegebenen Substantive\footnotemark 
+\footnotetext{Da zum Zeitpunkt der Diplomarbeit keine Anapher-Resolution verfügbar ist, können indirekt angegebene Substantive ("`\textit{Der Präsident von Norwegen} bekam den Friedensnobelpreis."',
+"`\textit{Er} bestellte noch einen Kaffee."' nicht aufgelöst - und damit auch nicht klassifiziert - werden.}
+Referenzen zu den Wikipedia-Artikeln hinzugefügt, 
+\subsection{YAGO}
+\textit{YAGO}\cite{yago} ist eine große Ontologie von Weltwissen mit hoher Präzision und Coverage, die automatisch aus Wikipedia und WordNet erstellt wurde.
+YAGO zeichnet sich dadurch aus, dass es die exzellente, von Hand gepflegte, Taxonomie von Wordnet mit der Vielfalt von Artikeln und damit Konzepten aus Wikipedia verbindet.
+
+Zu jedem Wikipedia-Artikel enthält YAGO ein passendes Individuum. Dabei ist jeder Wikipedia-Artikeltitel ein Kandidat, ein YAGO-Individuum zu werden.
+
+\begin{bsp}
+"`The Enterprise is in space."'
+Durch Ausführung von Wortschatz2DBpedia und einer Disambiguierung haben wir beispielhaft die referenzierten Wikipedia-Artikel \url{Starship_Enterprise} und \url{Outer_Space} extrahiert.
+\begin{center}
+\begin{tabular}{llll}
+Wort		&Artikelname			&YAGO-Individuum\\
+\hline
+Enterprise	&\url{Starship_Enterprise}	&\url{Starship} \url{Enterprise}\\
+space		&\url{Outer_Space}		&\url{outer} \url{space}\\
+\end{tabular}
+
+\begin{tabular}{llll}
+YAGO-Individuum			&type			&subClassOf\\
+\hline
+\url{Starship} \url{Enterprise}	&Star Trek ships	&~\\
+~				&craft			&~\\
+~				&\ldots			&~\\
+\url{outer} \url{space}		&~			&space\\
+~				&~			&location\\
+\end{tabular}
+\end{center}
+
+
+\end{bsp}
+
+\todo{Describes-Relation einbauen}
+
+
+Der Wikipedia-Seitentitel "`Starship Enterprise"' ist also ein Kandidat, das Individuum \url{Starship} \url{Enterprise} in YAGO zu werden.
+
+
+Wir erhalten also aus einer Menge von Artikeln eine Menge von Individuen.
+Für jedes dieser Individuen interessieren uns nun die zugehörige Klassen in der Hierarchie von YAGO.
+Die Subklassenhierarchie wird in YAGO durch die Relation \textit{TYPE} ausgedrückt.
+
+\url{Elephant} TYPE \url{Elephants}
+
+Die YAGO-Klassenhierarchie hat die Gestalt eines \textit{DAG}s (directed acyclic graph, gerichteter azyklischer Graph)
+
+%Mit Hilfe der \textit{YAGO}-Klassenhierarchie wird eine 
+
+Durch die Ausführung von Wortschatz2DBpedia ist jedes Wort mit einer Menge an möglichen passenden Wikipedia-Artikeln ausgezeichnet. Wurde zusätzlich noch eine Disambiguation ausgeführt, dann ist dies für 
+jedes Wort genau ein passender Wikipedia-Artikel.
+
+
+\subsection{Extrahieren der YAGO-Klasse und der Klassenhierarchie}
+Das Modell der YAGO-Ontologie\footnote{Download unter \url{http://www.mpi-inf.mpg.de/yago-naga/yago/yago.zip} (1 Gb)} benutzt dieselbe Wissensrepräsentation wie RDFS.
+die 
+
+Die Klassenhierarchie findet sich unter \url{facts/subClassOf/WordNetLinks.txt}.
+
+Die Zuordnung von Wikipedia-Klassen zu Wordnet-Klassen findet sich unter \url{facts/subClassOf/ConceptLinker.txt}.
+Durch Sortieren nach der Wordnet-Klasse lässt sich durch binäre Suche die Performance wesentlich erhöhen.
+
+\url{facts/type/IsAExtractor.txt}

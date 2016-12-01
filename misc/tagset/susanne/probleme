@@ -1,0 +1,15 @@
+probleme mit susanne treebank
+
+- mehrere sätze werden mit [O ... .O] zusammengefasst
+-> lösche alle vorkommen von "[O" und "O]"
+
+- der punkt ist an der falschen stelle (müsste eins mehr nach innen noch mit in den satz rein)
+-> ersetze ")(YF +\.)" durch "(YF +\.))"
+
+- es gibt sowas wie minbrk und majbrk:
+G12:0010.03     -       YB      <majbrk>        -       [Oh.Oh]
+-> lösche alle zeilen, in denen majbrk vorkommt:
+ cat  allinone.txt | egrep "(minbrk)|(majbrk)" -v
+oder noch besser
+ cat  allinone.txt | grep "brk>" -v
+

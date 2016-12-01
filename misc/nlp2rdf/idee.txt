@@ -1,0 +1,28 @@
+1. nlp -> rdf
+2. rdf -> dl learner
+
+1.
+Einleitung
+Gegenstand der Computerlinguistik ist die Verarbeitung natürlicher Sprache mit Hilfe des Computers.
+Diese Arbeit beschäftigt sich mit einem Teilgebiet der Computerlinguistik, dem Analysieren schriftlicher Sprache.
+
+Ziel dieser Arbeit ist die 
+
+In dieser Arbeit soll
+In der Computerlinguistik wird untersucht, wie natürliche Sprache mit Hilfe des Computers algorithmisch verarbeitet werden kann. 
+
+Die Suche nach Informationen in unstrukturierten nat ̈rlichsprachlichen Da-
+                                                      u
+ten ist Gegenstand des sogenannten Text Mining.
+    In dieser Arbeit soll ein Teilgebiet des Text Mining beleuchtet werden,
+n ̈mlich die Extraktion dom ̈nenspezifischer Fachbegriffe aus Fachtexten der
+  a                          a
+jeweiligen Dom ̈ne.
+               a
+
+- rdf als universelle strukturblubb dient zum bla
+Motivation
+
+The basic idea of nlp2rdf is to bridge the gap between syntax/statistics and semantics. NLP tools are wrapped in adapters. Their output is converted to RDF and possibly mapped to existing ontologies (e.g. the STTS tags used by Negra and a correctly trained stanford parser are mapped to http://141.89.100.105/owl2/stts.owl). According to the words contained in the sentences data is aggregated using the triplified version of the Wortschatz project Leipzig read more about the triplified version. Based on the mapping from Wortschatz to DBpedia "real world knowledge" can be aggregated from the LOD cloud to further enhance the produced RDF. As learning framework DL-Learner is currently used.
+
+Thesis (not yet proven): Aggregating different outputs of NLP tools in a structured format and enriching it via Linkeddata allows machine learning algortihms to achieve better results than before. 

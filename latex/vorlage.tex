@@ -1,0 +1,262 @@
+% $Id: diplomarbeit.tex,v 1.27 2005/02/08 12:34:21 seebi Exp $
+
+% Draftschalter
+\newif\ifdraft
+\draftfalse
+%\drafttrue
+
+% PDF-Schalter (automatisch gesetzt, durch pdflatex)
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+	\pdffalse
+\else
+	\pdftrue
+\fi
+
+
+% Documentclass
+\ifdraft
+	\documentclass[a4paper,11pt,twoside]{article} % zweiseitig
+%	\documentclass[a4paper,12pt,draft,twoside]{article}
+\else
+	\documentclass[a4paper,11pt]{article}
+\fi
+
+% Pakete und Paket-Configs
+\usepackage{times} % Times Roman als Standardschrift
+\usepackage{ngerman} % neue deutsche Rechtschreibung und Trennung
+\usepackage{fancyhdr} % spezielle Kopfzeilen
+\usepackage[latin1]{inputenc} % Umlaute üöä auch normal benutzen und nicht maskieren
+\usepackage{natbib} % ermöglicht Literaturverzeichniss
+\usepackage{subfigure} % Figures divided into subfigures.
+\usepackage{ifthen} % Ermöglicht ifthenelse und whiledo
+\usepackage{amsfonts} % Extra mathematical symbols
+\usepackage[rflt]{floatflt} % verbessertes floatfig, als um figure's fliesende texte
+\usepackage[T1]{fontenc} % ?? aber notwendig für korrekte PDF-Metadaten
+%\usepackage{longtable} % Support for tables longer than a page.
+%\usepackage{a4wide} % Increases width of printed area of an a4 page.
+%\usepackage{alltt} % verbatim environment except that \ and braces have their usual meanings.
+\usepackage{listings} % Typeset source code listings using LaTeX.
+\usepackage{moreverb} % bessere verbatim-umgebungen
+
+%\usepackage{makeidx} % Für Indexgenerierung
+%\makeindex % Aktivierung der Indexbefehle
+
+
+%%% TITEL, AUTOR, ETC
+\newcommand{\TITLE}{Haupttitel}
+\newcommand{\AUTHOR}{Vorname Nachname}
+\newcommand{\SUBJECTA}{Eventuell Untertitel Zeile 1}
+\newcommand{\SUBJECTB}{Eventuell Untertitel Zeile 2}
+
+\newcommand{\SUBJECT}{\SUBJECTA \SUBJECTB}
+\newcommand{\KEYWORDS}{Keywords}
+
+
+% Grafikpaket graphicx
+\ifpdf % PDF
+	\usepackage[pdftex]{graphicx}
+	%\usepackage[pdftex,bookmarks=true]{hyperref} % ???
+	%\usepackage[pdftex,a4paper,colorlinks,backref,pagebackref]{hyperref} % Hyperlinks im pdf aktivieren
+	%\usepackage{thumbpdf} % Thumbnails erstellen
+	%thumbpdf main-pdf.tex % ???
+	\DeclareGraphicsExtensions{.png,.pdf} % endungen gesetzt
+	\pdfinfo {
+		/Title (\TITLE: \SUBJECTA \SUBJECTB)
+		%/Creator (TeX)
+		%/Producer (pdfTeX 0.14a)
+		/Author (\AUTHOR)
+		%/CreationDate (D:19980212201000)
+		%/ModDate (D:19980212201000)
+		/Subject ()
+		/Keywords (\KEYWORDS)
+	}
+\else
+	\ifdraft % DRAFT
+	\usepackage[draft]{graphicx}
+	%\renewcommand{\includegraphics}[1]{\mbox{#1}} % ???
+	\else
+		% NORMAL
+		\usepackage{graphicx}
+	\fi
+	\DeclareGraphicsExtensions{.eps} % endungen gesetzt
+\fi
+\graphicspath{{inputs/}} % include-pfad für Grafiken
+
+% Style(s) für das Package listings
+\lstset{basicstyle=\renewcommand{\baselinestretch}{1}\small\ttfamily, tabsize=2}
+\lstdefinestyle{xmlfile}{numbers=left, numberstyle=\tiny, numberblanklines=true}
+\lstdefinestyle{xmlinline}{}
+\lstdefinestyle{inline}{}
+
+% Funktionen und Befehle
+\newcommand{\grad}{\ensuremath{^\circ}} % das Gradzeichen
+\newcommand{\NOTE}[1]{\marginpar{\tiny #1}} % kleine Notiz am Rand
+\newcommand{\COMMENT}[1]{} % Ein Comment, der ignoriert wird
+\newcommand{\REF}[1]{Kapitel \ref{#1}, S.~\pageref{#1}} % Referenz "Kapitel x.x, S. x"
+
+\newcommand{\FIGURE}[4]{ % Include EINER Grafik
+% Parameter: - (optional) Captiontext in Verzeichnis (\zb{} Beispiel A)
+%            - Captiontext (\zb{} Beispiel A einer ... und bla bla)
+%            - Dateiprefix (z.B rdf-example1)
+%            - Breite (\zb{} 9.9cm)
+\begin{figure}[ht]
+\begin{center}
+	\includegraphics[width=#4]{#3}
+	\caption[#1]{\label{fig:#3}#2}
+\end{center}
+\end{figure}
+}
+\newcommand{\FIGUREOB}[3]{ % Include EINER Grafik (originalgroesse)
+% Parameter: - (optional) Captiontext in Verzeichnis (\zb{} Beispiel A)
+%            - Captiontext (\zb{} Beispiel A einer ... und bla bla)
+%            - Dateiprefix (z.B rdf-example1)
+\begin{figure}[ht]
+\begin{center}
+	\includegraphics{#3}
+	\caption[#1]{\label{fig:#3}#2}
+\end{center}
+\end{figure}
+}
+
+
+\newcommand{\FLOATFIGURE}[4]{ % Include EINER FLOAT-Grafik
+% Parameter: - (optional) Captiontext in Verzeichnis (\zb{} Beispiel A)
+%            - Captiontext (\zb{} Beispiel A einer ... und bla bla)
+%            - Dateiprefix (z.B rdf-example1)
+%            - Breite (\zb{} 9.9cm)
+\begin{floatingfigure}[r]{#4}
+	\centering
+	\includegraphics[width=#4]{#3}
+	\caption[#1]{\label{fig:#3}#2}
+\end{floatingfigure}
+}
+\newcommand{\FLOATFIGUREOC}[2]{ % Include EINER FLOAT-Grafik ohne Caption
+% Parameter: - Dateiprefix (z.B rdf-example1)
+%            - Breite (\zb{} 9.9cm)
+\begin{floatingfigure}[r]{#2}
+	\centering
+	\includegraphics[width=#2]{#1}
+\end{floatingfigure}
+}
+
+
+% Bibliography
+%\def\cite{\citep}
+\bibpunct{[}{]}{;}{a}{,}{,}
+\bibliographystyle{german_abbrvnat} % Stil des Literaturverzeichnisses und der Bezüge
+%\bibliographystyle{gerabbrv}
+%\bibliographystyle{german_plain}
+%\bibliographystyle{abbrvnat} % versuch, ob das auch unter miktex klappt
+
+
+% Designstuff
+% Ränder
+\textwidth15,5cm
+\textheight21cm
+\oddsidemargin3mm
+\evensidemargin3mm
+%\topmargin-10mm
+
+\renewcommand{\baselinestretch}{1.2} % 1,2 facher Zeilenabstand im gesamten Dokument
+\renewcommand\verbatimtabsize{2\relax} % Größe der Tabulatoren auf 2 gesetzt
+
+\pagestyle{headings} % Kopf- und Fusszeilen
+\pagenumbering{roman} % Nummerierung der Seiten
+\newcommand{\maximagewidth}{15cm} % maximal mögliche Bildbreite
+
+\setlength{\parindent}{0cm} % Einrückung am Abstzanfang
+\setlength{\parskip}{5pt plus 2pt minus 1pt} % Abstand der Absätze zueinander
+
+\sloppy % großzügigere Wortabstände
+\frenchspacing % Kein Zusatzzwischenraum nach Satzzeichen
+
+\setcounter{secnumdepth}{3} % Zählung bis paragraph 1.1.1
+\setcounter{tocdepth}{3} % Inhaltsverzeichnis bis paragraph 1.1.1
+
+%\makeglossary % Schreibe ein Glossar-File
+
+\title{\TITLE \\ {\large\SUBJECT}}
+\author{\AUTHOR}
+\date{\today}
+
+\begin{document}
+
+%%% Titelseite %%%
+\begin{titlepage}
+\thispagestyle{empty}
+\renewcommand{\baselinestretch}{1}
+\fontsize{12pt}{14pt}\selectfont
+\vspace*{1cm}
+
+% HEADER
+\centerline{
+\begin{minipage}{15cm}
+   \centerline{\uppercase{Universität Leipzig}}
+   \centerline{Fakultät für Mathematik und Informatik}
+   \centerline{Institut für Informatik}
+\end{minipage}}\par
+
+% OFFICIAL DRAFT
+\ifdraft
+   \vspace*{2cm}
+   \centerline{
+   \setlength{\doublerulesep}{3mm}
+   \setlength{\arrayrulewidth}{1mm}
+   \renewcommand{\arraystretch}{2}
+   \begin{tabular}{p{5cm}|c|p{5cm}}\hline \hline
+      & {\bf {\Huge {\sc D~R~A~F~T}}} & \\ \hline \hline 
+   \end{tabular}
+   }
+   \vspace*{2cm}
+\else
+\vspace*{4.5cm}
+\fi
+
+% CENTER
+\centerline{\fontsize{20pt}{20pt} {\bf \TITLE}}\par\vspace*{0.3cm}
+\centerline{\fontsize{14pt}{14pt} {\bf \SUBJECTA}}\par\vspace*{0.3cm}
+\centerline{\fontsize{14pt}{14pt} {\bf \SUBJECTB}}\par\vspace*{3cm}
+\centerline{{\large {\bf Diplomarbeit}}}\par
+
+% BOTTOM
+\vfill
+
+\noindent\begin{minipage}[t]{.49\linewidth}
+Leipzig, Monat Jahr
+\end{minipage}\hfill
+\begin{minipage}[t]{5cm}
+vorgelegt von\\[2ex]
+\AUTHOR\\
+geb. am: dd.mm.yyyy\\[2ex]
+Studiengang Informatik
+\end{minipage}\par
+
+\end{titlepage} 
+
+
+% Zusammenfassung
+\thispagestyle{empty}
+\section*{Zusammenfassung}
+...
+
+
+% Inhaltsverzeichnis
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+
+
+%% Include alle Sub-Files
+%\include{1einleitung}
+%\include{2grundlagen}
+%\include{4anforderungen}
+%\include{3stand}
+%\include{5spezifikation}
+%\include{6implementation}
+%\include{7zusammenfassung}
+%\include{8suffix}
+
+\end{document}

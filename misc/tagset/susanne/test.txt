@@ -1,0 +1,4 @@
+( S ( Fa:c (CS While) ( Jrh:e (ATn no) (JJR larger) ( P (CSN than) ( Nnp (JJ Dutch) (NNL2 Springs)  )  )  )  ) 
+(YC +,) ( Ns:s (DD1i this) ( Ns (NN1u mining) (NN1n supply)  ) (NNL1c town)  ) ( Vd (VHD had)  ) 
+( Ns:o (AT the) (NN1c appearance) ( Po (IO of) ( Tg ( Vgb (VBG being)  ) 
+( J:e (RRf far) (JJR busier) ( J+ (CC and) (DAR more) (JJ prosperous)  )  )  )  )  )   (YF +.) )

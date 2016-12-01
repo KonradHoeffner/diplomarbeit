@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -E "HREF=\"([^\"])*\"" -o | sed "s|HREF=||g" | sed "s|\"||g" | xargs -I @ wget @
